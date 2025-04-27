@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
+  <!-- Background -->
+  <rect width="400" height="200" fill="#000000"/>
+
+  <!-- CYBERSEC MOROCCO text -->
+  <text x="50%" y="60" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#FF4040" text-anchor="middle">
+    CYBERSEC
+  </text>
+  <text x="50%" y="110" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#FF4040" text-anchor="middle">
+    MOROCCO
+  </text>
+
+  <!-- the experts network text -->
+  <text x="50%" y="150" font-family="Arial, sans-serif" font-size="20" fill="#FF4040" text-anchor="middle">
+    the experts network
+  </text>
+</svg>
