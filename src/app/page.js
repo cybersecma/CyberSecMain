@@ -9,41 +9,52 @@ export default function Home() {
   const links = [
     {
       title: 'LinkedIn Professional Network',
-      url: 'https://www.linkedin.com/groups/10081631/', // Replace with actual URL
+      url: 'https://www.linkedin.com/groups/10081631/',
       icon: 'linkedin'
     },
     {
       title: 'Discord Community',
-      url: 'https://discord.gg/5TT3TKxmWY', // Replace with actual URL
+      url: 'https://discord.gg/5TT3TKxmWY',
       icon: 'discord'
     },
     {
       title: 'WhatsApp Group',
-      url: 'https://chat.whatsapp.com/LbM0CTfFDbS8hjHo2NBuml', // Replace with actual URL
+      url: 'https://chat.whatsapp.com/LbM0CTfFDbS8hjHo2NBuml',
       icon: 'whatsapp'
     }
   ];
 
   const expertiseTags = [
-    'Threat Intelligence',
-    'Security Architecture',
-    'Digital Forensics'
+    {
+      name: 'Cloud Security',
+      url: 'https://discord.com/channels/1362390767317946388/1362390767917863109'
+    },
+    {
+      name: 'AI Security',
+      url: 'https://discord.com/channels/1362390767317946388/1362665836237688932'
+    },
+    {
+      name: 'Network Security',
+      url: 'https://discord.com/channels/1362390767317946388/1362390767917863109'
+    }
   ];
 
   const getIcon = (iconName) => {
-    switch(iconName) {
-      case 'linkedin': return <FaLinkedinIn color="#cc0000" />;
-      case 'discord': return <FaDiscord color="#cc0000" />;
-      case 'whatsapp': return <FaWhatsapp color="#cc0000" />;
-      default: return null;
+    switch (iconName) {
+      case 'linkedin':
+        return <FaLinkedinIn color="#cc0000" />;
+      case 'discord':
+        return <FaDiscord color="#cc0000" />;
+      case 'whatsapp':
+        return <FaWhatsapp color="#cc0000" />;
+      default:
+        return null;
     }
   };
 
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        {/* Removed the subtle accent div */}
-        
         <div className={styles.profile}>
           <div className={styles.imageContainer}>
             <Image
@@ -59,9 +70,15 @@ export default function Home() {
           
           <div className={styles.expertise}>
             {expertiseTags.map((tag, index) => (
-              <span key={index} className={styles.expertiseTag}>
-                {tag}
-              </span>
+              <a
+                key={index}
+                href={tag.url}
+                className={styles.expertiseTag}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {tag.name}
+              </a>
             ))}
           </div>
         </div>
