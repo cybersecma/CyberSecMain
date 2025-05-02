@@ -18,7 +18,7 @@ export default function Home() {
       icon: 'discord'
     },
     {
-      title: 'WhatsApp Group',
+      title: 'WhatsApp Community',
       url: 'https://chat.whatsapp.com/EXp857CsQSdL5m2ZauHKgh',
       icon: 'whatsapp'
     }
