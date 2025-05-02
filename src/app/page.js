@@ -19,7 +19,7 @@ export default function Home() {
     },
     {
       title: 'WhatsApp Group',
-      url: 'https://chat.whatsapp.com/LbM0CTfFDbS8hjHo2NBuml',
+      url: 'https://chat.whatsapp.com/EXp857CsQSdL5m2ZauHKgh',
       icon: 'whatsapp'
     }
   ];
