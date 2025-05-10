@@ -58,7 +58,7 @@ export default function Home() {
         <div className={styles.profile}>
           <div className={styles.imageContainer}>
             <Image
-              src="/logo.png"
+              src="/logo.jpeg"
               alt="CYBERSEC MOROCCO"
               width={80}
               height={90}
