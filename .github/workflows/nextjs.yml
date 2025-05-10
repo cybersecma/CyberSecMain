@@ -29,8 +29,8 @@ jobs:
         run: npm run build
         # Next.js 13.3+ handles export during build with output: 'export' in next.config.mjs
 
-      - name: Set custom domain
-        run: echo "cybersec.ma" > out/CNAME
+      # We removed the CNAME step here, as we're now using A records
+      # The public/CNAME file will be copied to the out directory during build
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
