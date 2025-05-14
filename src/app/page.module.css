@@ -3,53 +3,131 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* Reverted from flex-start */
   background-color: #0a0a0a;
   color: #f0f0f0;
-  padding: 0 1rem;
+  padding: 2rem 1rem; /* Adjusted padding for overall spacing */
 }
 
 .container {
-  max-width: 550px;
-  width: 100%;
-  padding: 50px 20px;
+  max-width: 700px; /* Slightly increased max-width for better use of space */
+  width: 90%; /* Changed from 100% to 90% for better side margins on small screens */
+  padding: 2rem 1rem; /* Adjusted padding, can be clamp if needed */
   margin: 0 auto;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: auto; /* Changed from 80vh, let content define height */
+  /* REMOVED transform: scale(1.5); */
+  /* REMOVED transform-origin: top center; */
 }
 
-/* Removed .subtleAccent class */
+/* REMOVED .container::before rule to remove top red highlight */
 
-.profile {
+/* Navigation Header */
+.navHeader {
+  margin-bottom: clamp(1.5rem, 4vh, 2rem); /* Responsive margin */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: clamp(0.75rem, 2vh, 1rem); /* Responsive padding */
+  width: 100%;
+}
+
+.navList {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Vertically align items */
+  flex-wrap: wrap; /* Allow nav items to wrap on smaller screens */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 5px; /* Add gap for wrapped items */
+}
+
+.navItem {
+  margin: 0 clamp(0.5rem, 2vw, 1rem); /* Responsive margin */
+}
+
+.navItem a {
+  color: #fff;
+  text-decoration: none;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Responsive font size */
+  font-weight: 500;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.6rem, 1.5vw, 0.8rem); /* Responsive padding */
+  border-radius: 4px;
+}
+
+.navItem a:hover {
+  color: rgba(204, 0, 0, 0.8);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Section Styles */
+.section {
+  padding: clamp(2rem, 5vh, 3rem) 0; /* Responsive padding */
+  margin-bottom: clamp(1rem, 3vh, 1.5rem); /* Responsive margin */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   text-align: center;
-  margin-bottom: 40px;
+  width: 100%;
 }
 
-.imageContainer {
-  display: inline-block;
-  position: relative;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid rgba(204, 0, 0, 0.7);
+.section:last-of-type {
+  border-bottom: none; /* Remove border from the last section */
+  margin-bottom: 0;
 }
 
-.profileImage {
-  object-fit: cover;
+.section:first-of-type {
+  padding-top: clamp(1rem, 3vh, 1.5rem); /* Adjusted top padding for first section */
 }
 
-.title {
+.sectionContent {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.title { /* General title, consider if this is still needed or if sectionTitle covers all */
   margin: 15px 0 8px;
-  font-size: 24px;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
   font-weight: 600;
   letter-spacing: 1px;
   color: #fff;
 }
 
-.description {
+.mainTitle {
+  margin: 10px 0;
+  font-size: clamp(2rem, 6vw, 3.5rem); /* Responsive font size */
+  font-weight: 700;
+  letter-spacing: clamp(1px, 0.2vw + 0.5px, 2px); /* Responsive letter-spacing */
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1.2;
+  transition: color 0.3s ease; /* Added transition for smooth color change */
+}
+
+.mainTitle:hover {
+  color: #cc0000; /* Red color on hover */
+}
+
+.description { /* General description, consider if this is still needed */
   color: rgba(255, 255, 255, 0.7);
-  font-size: 15px;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   margin-bottom: 25px;
+}
+
+.mainDescription {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: clamp(1rem, 3vw, 1.5rem); /* Responsive font size */
+  margin-bottom: 30px;
+  max-width: 90%; /* Adjusted max-width */
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .expertise {
@@ -57,30 +135,31 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: clamp(0.5rem, 1.5vw, 0.75rem); /* Responsive gap */
 }
 
 .expertiseTag {
-  font-size: 12px;
-  padding: 4px 10px;
-  border-radius: 4px;
+  font-size: clamp(0.75rem, 2vw, 0.9rem); /* Responsive font size */
+  padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.6rem, 1.5vw, 0.8rem); /* Responsive padding */
+  border-radius: 5px;
   background-color: rgba(204, 0, 0, 0.15);
   color: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(204, 0, 0, 0.3);
   font-weight: 500;
+  text-decoration: none;
 }
 
 .links {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: clamp(0.75rem, 2vh, 1rem); /* Responsive gap */
 }
 
 .link {
-  padding: 16px 20px;
+  padding: clamp(0.8rem, 2vw, 1.1rem) clamp(1rem, 2.5vw, 1.3rem); /* Responsive padding */
   background-color: rgba(20, 20, 20, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 6px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -98,21 +177,176 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: clamp(30px, 8vw, 40px); /* Responsive size */
+  height: clamp(30px, 8vw, 40px); /* Responsive size */
   border-radius: 50%;
-  margin-right: 12px;
+  margin-right: clamp(0.75rem, 2vw, 1rem); /* Responsive margin */
   background-color: rgba(204, 0, 0, 0.1);
+  flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
 .linkText {
-  font-size: 15px;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Responsive font size */
   font-weight: 500;
+  word-break: break-word; /* Allow text to break if too long */
 }
 
 .footer {
   text-align: center;
-  margin-top: 40px;
+  margin-top: clamp(2rem, 5vh, 3rem); /* Responsive margin */
   color: rgba(255, 255, 255, 0.4);
-  font-size: 13px;
+  font-size: clamp(0.75rem, 2vw, 0.9rem); /* Responsive font size */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: clamp(1rem, 3vh, 1.5rem); /* Responsive padding */
+  width: 100%;
+}
+
+/* Blog Section Styles */
+/* .blogSection class might be redundant if .section is used for all pages */
+
+.sectionTitle {
+  font-size: clamp(1.5rem, 5vw, 2.2rem); /* Responsive font size */
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: clamp(1.5rem, 4vh, 2rem); /* Responsive margin */
+  position: relative;
+  display: inline-block;
+  padding-bottom: clamp(0.5rem, 1.5vh, 0.75rem); /* Responsive padding */
+  line-height: 1.3;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background-color: #cc0000;
+  border-radius: 2px;
+}
+
+.blogPosts {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 3vh, 1.5rem); /* Responsive gap */
+}
+
+.blogPost {
+  background-color: rgba(20, 20, 20, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: clamp(1rem, 3vw, 1.5rem); /* Responsive padding */
+  transition: all 0.2s ease;
+  text-align: left; /* Align blog post text to the left */
+}
+
+.blogPost:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border-color: rgba(204, 0, 0, 0.3);
+}
+
+.blogPostTitle {
+  font-size: clamp(1.1rem, 3.5vw, 1.5rem); /* Responsive font size */
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.blogPostDate {
+  font-size: clamp(0.7rem, 1.8vw, 0.85rem); /* Responsive font size */
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.75rem;
+}
+
+.blogPostExcerpt {
+  font-size: clamp(0.85rem, 2.2vw, 1rem); /* Responsive font size */
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.readMore {
+  display: inline-block;
+  color: #cc0000;
+  text-decoration: none;
+  font-size: clamp(0.8rem, 2vw, 0.95rem); /* Responsive font size */
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.readMore:hover {
+  text-decoration: underline;
+  color: rgba(204, 0, 0, 0.8);
+}
+
+/* Medium screens and up */
+@media (min-width: 768px) {
+  .container {
+    width: 80%; /* Adjust container width for medium screens */
+  }
+  .navItem a {
+     font-size: clamp(1rem, 1.5vw, 1.2rem);
+  }
+  .mainTitle {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+  }
+  .mainDescription {
+    font-size: clamp(1.1rem, 2.5vw, 1.75rem);
+  }
+  .sectionTitle {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  }
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+  .navHeader {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+  }
+  .navList {
+    gap: 2px; /* Reduce gap for very small screens */
+  }
+  .navItem {
+    margin: 0 0.3rem;
+  }
+  .navItem a {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.5rem;
+  }
+  .mainTitle {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+  .mainDescription {
+    font-size: clamp(0.9rem, 4vw, 1.2rem);
+  }
+  .sectionTitle {
+    font-size: clamp(1.3rem, 6vw, 1.8rem);
+    margin-bottom: 1rem;
+    padding-bottom: 0.4rem;
+  }
+  .link {
+    padding: 0.6rem 0.8rem;
+  }
+  .linkIcon {
+    width: clamp(25px, 7vw, 35px);
+    height: clamp(25px, 7vw, 35px);
+    margin-right: 0.5rem;
+  }
+  .linkText {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+  }
+  .blogPostTitle {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+  }
+  .blogPostExcerpt {
+    font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+  }
 }

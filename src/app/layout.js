@@ -1,5 +1,8 @@
 // --- src/app/layout.js ---
 import './globals.css';
+import Navigation from '../components/Navigation'; // Import Navigation
+import Footer from '../components/Footer'; // Import Footer
+import styles from './page.module.css'; // Import styles for main container
 
 export const metadata = {
   title: 'CYBERSEC MOROCCO',
@@ -29,7 +32,15 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="canonical" href="https://cybersec.ma" />
       </head>
-      <body>{children}</body>
+      <body>
+        <div className={styles.main}> {/* Added main wrapper from page.module.css */}
+          <div className={styles.container}> {/* Added container from page.module.css */}
+            <Navigation />
+            {children}
+            <Footer />
+          </div>
+        </div>
+      </body>
     </html>
   );
 }
