@@ -21,10 +21,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build and Export
-        run: |
-          npm run build
-          npm run export
+      - name: Build
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main' # Only deploy on push to main
