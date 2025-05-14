@@ -21,14 +21,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build
-        run: npm run build
+      - name: Build and Export
+        run: |
+          npm run build
+          npm run export
 
-      # If you want to deploy to GitHub Pages, you can add a step like this:
-      # - name: Deploy to GitHub Pages
-      #   if: github.event_name == 'push' && github.ref == 'refs/heads/main' # Only deploy on push to main
-      #   uses: peaceiris/actions-gh-pages@v4
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./out
-      #     # cname: your.custom.domain # Uncomment if you have a custom domain
+      - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' # Only deploy on push to main
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          cname: cybersec.ma
