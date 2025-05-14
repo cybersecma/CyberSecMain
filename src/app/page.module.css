@@ -101,11 +101,24 @@
   color: #fff;
   text-transform: uppercase;
   line-height: 1.2;
+  /* Removed transition: color 0.3s ease; */
+}
+
+.mainTitleHomepage:hover {
+  color: #cc0000; /* Red color on hover */
   transition: color 0.3s ease; /* Added transition for smooth color change */
 }
 
-.mainTitle:hover {
-  color: #cc0000; /* Red color on hover */
+/* NEW class for blog post titles */
+.articleTitle {
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem); /* Adjusted size for blog articles */
+  font-weight: 600; /* Slightly less bold than mainTitle */
+  color: #e0e0e0; /* Softer white for article text */
+  text-transform: none; /* Ensure not uppercase */
+  text-align: left; /* Align to the left */
+  line-height: 1.35;
+  margin-top: 0.5rem; 
+  margin-bottom: 0.5rem; /* Space before date */
 }
 
 .description { /* General description, consider if this is still needed */
@@ -256,10 +269,12 @@
   line-height: 1.3;
 }
 
+/* UPDATED .blogPostDate for individual blog post page */
 .blogPostDate {
-  font-size: clamp(0.7rem, 1.8vw, 0.85rem); /* Responsive font size */
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 0.75rem;
+  font-size: clamp(0.8rem, 2vw, 0.9rem); 
+  color: rgba(255, 255, 255, 0.55); 
+  margin-bottom: 1.5rem; /* Space after date, before content */
+  text-align: left; /* Ensure left alignment */
 }
 
 .blogPostExcerpt {
@@ -281,6 +296,32 @@
 .readMore:hover {
   text-decoration: underline;
   color: rgba(204, 0, 0, 0.8);
+}
+
+/* UPDATED .blogPostFullContent for individual blog post page */
+.blogPostFullContent {
+  font-size: clamp(0.9rem, 2.4vw, 1.05rem); /* LinkedIn-like body font size */
+  color: rgba(255, 255, 255, 0.8); 
+  line-height: 1.75; /* Increased for readability */
+  text-align: left; /* Ensure left alignment */
+}
+
+.blogPostFullContent p { /* Optional: Style paragraphs if content uses them */
+  margin-bottom: 1em; 
+}
+
+/* NEW styles for article metadata */
+.articleMeta {
+  margin-top: clamp(2rem, 5vh, 2.5rem);
+  padding-top: clamp(1rem, 3vh, 1.5rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+}
+
+.articleMeta p {
+  margin-bottom: 0.5rem;
 }
 
 /* Medium screens and up */

@@ -7,15 +7,17 @@ export default function NotFound() {
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        <div className={styles.profile}>
-          <h1 className={styles.title}>404 - Page Not Found</h1>
-          <p className={styles.description}>The page you are looking for does not exist.</p>
-          <div className={styles.links}>
-            <Link href="/" className={styles.link}>
-              <span className={styles.linkText}>Go back to home</span>
-            </Link>
+        <section className={styles.section}>
+          <div className={styles.sectionContent}>
+            <h1 className={styles.sectionTitle}>404 - Page Not Found</h1>
+            <p className={styles.mainDescription}>The page you are looking for does not exist.</p>
+            <div className={styles.links}>
+              <Link href="/" className={styles.link}>
+                <span className={styles.linkText}>Go back to home</span>
+              </Link>
+            </div>
           </div>
-        </div>
+        </section>
       </div>
     </main>
   );

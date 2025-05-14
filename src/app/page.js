@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <section className={styles.section}> {/* Removed id="home" */}
       <div className={styles.sectionContent}>
-        <h1 className={styles.mainTitle}>CYBERSEC MOROCCO</h1>
+        <h1 className={`${styles.mainTitle} ${styles.mainTitleHomepage}`}>CYBERSEC MOROCCO</h1>
         <p className={styles.mainDescription}>Community of Cybersecurity Professionals</p>
       </div>
     </section>
