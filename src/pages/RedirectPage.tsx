@@ -1,27 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { createClient } from '@supabase/supabase-js';
 
-// Initialize Supabase client with proper headers
+// Initialize Supabase client
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    persistSession: false
-  },
-  global: {
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Prefer': 'return=minimal'
-    }
-  }
-});
-
-export default function RedirectPage() {
+const RedirectPage = () => {
   const { code } = useParams();
   const navigate = useNavigate();
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchAndRedirect = async () => {
@@ -44,7 +33,8 @@ export default function RedirectPage() {
         window.location.href = data.original_url;
       } catch (error) {
         console.error('Error fetching URL:', error);
-        navigate('/404');
+        setError('Failed to redirect. Please check if the URL is valid.');
+        setTimeout(() => navigate('/404'), 2000);
       }
     };
 
@@ -53,9 +43,15 @@ export default function RedirectPage() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-black">
-      <div className="text-white">
-        Redirecting...
+      <div className="text-white text-center">
+        {error ? (
+          <div className="text-red-400">{error}</div>
+        ) : (
+          <div className="animate-pulse">Redirecting...</div>
+        )}
       </div>
     </div>
   );
-} 
+};
+
+export default RedirectPage; 
