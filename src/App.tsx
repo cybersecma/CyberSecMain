@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, createRoutesFromElements, createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -11,6 +11,22 @@ import NotFound from './pages/NotFound';
 import ShortenerPage from './pages/ShortenerPage';
 import RedirectPage from './pages/RedirectPage';
 import { PostProvider } from './context/PostContext';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} />
+      <Route path="post/:slug" element={<PostPage />} />
+      <Route path="articles" element={<ArticlesPage />} />
+      <Route path="about" element={<AboutPage />} />
+      <Route path="community" element={<CommunityPage />} />
+      <Route path="search" element={<SearchPage />} />
+      <Route path="shor" element={<ShortenerPage />} />
+      <Route path=":code" element={<RedirectPage />} />
+      <Route path="*" element={<NotFound />} />
+    </Route>
+  )
+);
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,21 +52,7 @@ function App() {
 
   return (
     <PostProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="/post/:slug" element={<PostPage />} />
-            <Route path="/articles" element={<ArticlesPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/community" element={<CommunityPage />} />
-            <Route path="/search" element={<SearchPage />} />
-            <Route path="/shor" element={<ShortenerPage />} />
-            <Route path="/:code" element={<RedirectPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </Router>
+      <RouterProvider router={router} />
     </PostProvider>
   );
 }

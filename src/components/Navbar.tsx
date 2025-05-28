@@ -44,6 +44,14 @@ const Navbar = () => {
               Home
             </Link>
             <Link 
+              to="/articles" 
+              className={`text-sm font-medium transition-colors ${
+                isActive('/articles') ? 'text-cyber-red-500' : 'text-gray-300 hover:text-white'
+              }`}
+            >
+              Articles
+            </Link>
+            <Link 
               to="/about" 
               className={`text-sm font-medium transition-colors ${
                 isActive('/about') ? 'text-cyber-red-500' : 'text-gray-300 hover:text-white'
@@ -96,6 +104,15 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
+              </Link>
+              <Link 
+                to="/articles" 
+                className={`text-sm font-medium transition-colors ${
+                  isActive('/articles') ? 'text-cyber-red-500' : 'text-gray-300 hover:text-white'
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Articles
               </Link>
               <Link 
                 to="/about" 

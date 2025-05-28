@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback, ReactNode } from 'react';
+import { createContext, useContext, useState, useCallback, ReactNode, startTransition } from 'react';
 import { Post } from '../types';
 import { getAllPosts } from '../utils/markdown';
 
@@ -31,12 +31,13 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
     
     try {
       const fetchedPosts = await getAllPosts();
-      // Ensure consistent author information
-      const standardizedPosts = fetchedPosts.map(post => ({
-        ...post,
-        author: "Moroccan Cyber Security Community"
-      }));
-      setPosts(standardizedPosts);
+      // Use startTransition for state updates
+      startTransition(() => {
+        setPosts(fetchedPosts.map(post => ({
+          ...post,
+          author: "Moroccan Cyber Security Community"
+        })));
+      });
     } catch (err) {
       setError('Failed to load posts. Please try again later.');
       console.error('Error fetching posts:', err);

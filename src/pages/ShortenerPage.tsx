@@ -1,25 +1,5 @@
 import React, { useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
-
-// Initialize Supabase client with proper headers
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
-
-console.log('Supabase URL:', supabaseUrl);
-console.log('Supabase Key:', supabaseAnonKey);
-
-const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    persistSession: false
-  },
-  global: {
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Prefer': 'return=minimal'
-    }
-  }
-});
+import { supabase } from '../lib/auth';
 
 const ShortenerPage: React.FC = () => {
   const [url, setUrl] = useState('');

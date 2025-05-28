@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Clock, User, Tag } from 'lucide-react';
+import { Clock, User, Tag, ArrowRight } from 'lucide-react';
 import { Post } from '../types';
 import { formatDate } from '../utils/formatters';
 
@@ -13,36 +13,55 @@ interface PostCardProps {
 
 const PostCard = ({ post, featured = false }: PostCardProps) => {
   const imageUrl = post.coverImage || FALLBACK_IMAGE;
+  
   return (
-    <article className={`bg-gray-800/50 rounded-lg border border-gray-700 overflow-hidden transition-all duration-300 hover:border-cyber-red-500/50 hover:shadow-lg hover:shadow-cyber-red-500/10 ${featured ? 'lg:col-span-2 row-span-2' : ''}`}>
-      <Link to={`/post/${post.slug}`} className="block h-full focus:outline-none focus:ring-2 focus:ring-cyber-red-500">
-        <div className={`relative overflow-hidden ${featured ? 'h-64 md:h-80' : 'h-48'}`}>
+    <article 
+      className={`
+        group relative overflow-hidden rounded-xl border border-gray-800 
+        transition-all duration-300 hover:border-red-500/30
+        ${featured ? 'lg:col-span-2 row-span-2 bg-gradient-to-br from-gray-900 to-black' : 'bg-gradient-to-br from-gray-900 to-black'}
+      `}
+    >
+      <Link 
+        to={`/post/${post.slug}`}
+        className="block h-full focus:outline-none focus:ring-2 focus:ring-red-500"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
+        <div className={`relative ${featured ? 'h-72' : 'h-56'}`}>
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent z-10"></div>
           <img 
             src={imageUrl} 
             alt={post.title} 
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 bg-gray-900"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             onError={e => (e.currentTarget.src = FALLBACK_IMAGE)}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
         </div>
-        <div className="p-6 flex flex-col justify-between min-h-[160px]">
-          <div>
-            <h3 className={`${featured ? 'text-2xl' : 'text-xl'} font-bold mb-2 text-white group-hover:text-cyber-red-500 transition-colors`}>{post.title}</h3>
-            <p className="text-gray-300 mb-4 line-clamp-3 min-h-[60px]">{post.excerpt || 'No summary available.'}</p>
-          </div>
-          <div className="flex flex-wrap items-center text-xs text-gray-400 gap-4 mt-auto">
-            <div className="flex items-center">
-              <User className="h-3 w-3 mr-1" />
-              <span>{post.author}</span>
+        
+        <div className="relative z-20 p-6 -mt-20">
+          <h3 className={`
+            font-bold text-white group-hover:text-red-500 transition-colors duration-300
+            ${featured ? 'text-2xl mb-4' : 'text-xl mb-3'}
+          `}>
+            {post.title}
+          </h3>
+          
+          <p className="text-gray-300 mb-4 line-clamp-2">
+            {post.excerpt || 'No summary available.'}
+          </p>
+          
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4 text-sm text-gray-400">
+              <div className="flex items-center">
+                <User className="h-4 w-4 mr-2" />
+                <span>{post.author}</span>
+              </div>
+              <div className="flex items-center">
+                <Clock className="h-4 w-4 mr-2" />
+                <span>{formatDate(post.publishedAt)}</span>
+              </div>
             </div>
-            <div className="flex items-center">
-              <Clock className="h-3 w-3 mr-1" />
-              <span>{formatDate(post.publishedAt)}</span>
-            </div>
-            <div className="flex items-center">
-              <Tag className="h-3 w-3 mr-1" />
-              <span>{post.readingTime} min read</span>
-            </div>
+            
+            <ArrowRight className="h-5 w-5 text-red-500 transform transition-transform duration-300 group-hover:translate-x-1" />
           </div>
         </div>
       </Link>

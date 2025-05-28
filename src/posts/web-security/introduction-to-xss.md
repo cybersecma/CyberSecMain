@@ -10,35 +10,44 @@ tags: ["XSS", "Security", "OWASP", "JavaScript"]
 readingTime: 8
 ---
 
-# 🧠 Introduction to Cross-Site Scripting (XSS)
+**Cross-Site Scripting (XSS)** is one of the most common web vulnerabilities and is listed in the [<span class="highlight-blue">OWASP Top 10</span>](https://owasp.org/www-project-top-ten/). It allows attackers to inject malicious scripts into content viewed by other users, potentially leading to data theft, session hijacking, or defacement.
 
-**Cross-Site Scripting (XSS)** is one of the most common web vulnerabilities and is listed in the [OWASP Top 10](https://owasp.org/www-project-top-ten/). It allows attackers to inject malicious scripts into content viewed by other users, potentially leading to data theft, session hijacking, or defacement.
-
-## 📖 Types of XSS Attacks
+## 📖 <span class="highlight-red">Types of XSS Attacks</span>
 
 1. **Stored XSS**: The script is permanently stored on the target server (e.g., in a database).
 2. **Reflected XSS**: The script comes from the current HTTP request (e.g., in a query parameter).
 3. **DOM-based XSS**: The vulnerability exists in client-side JavaScript that processes user input insecurely.
 
+<span class="highlight-red">This text is red!</span>
+
 ## 💻 Example of a Vulnerable Code
 
 Here's a simple example of insecure code in an Express.js + EJS application:
 
-```javascript
+```js
 app.get('/profile', (req, res) => {
-  const username = req.query.username;
-  res.render('profile', { username: username });
+    const username = req.query.username;
+    res.render('profile', { username: username });
 });
 ```
 
-If profile.ejs uses the username like this:
+And in profile.ejs:
 
-```ejs
+```html
 <h1>Welcome <%= username %></h1>
 ```
 
 An attacker could inject malicious JavaScript by accessing:
-`/profile?username=<script>alert('XSS')</script>`
+
+```plaintext
+/profile?username=<script>alert('XSS')</script>
+```
+
+Which would result in this vulnerable output:
+
+```html
+<h1>Welcome <script>alert('XSS')</script></h1>
+```
 
 ## 🛡️ Prevention Techniques
 
@@ -64,3 +73,8 @@ XSS vulnerabilities can lead to:
 3. Use security headers
 4. Regular security audits
 5. Keep dependencies updated 
+
+youtube:XMi8ZSESJA4
+
+
+author:{"name": "John Doe", "avatar": "https://yt3.ggpht.com/evghp-_dkRBFlghub2OyVihKSNXLlv_1cR9zJ9RFKznQacXXbd8HunHEWhLz3n6b5DbC-O61YA=s48-c-k-c0x00ffffff-no-rj", "role": "Senior Security Researcher", "description": "John is a cybersecurity expert with over 10 years of experience in penetration testing and security research."}

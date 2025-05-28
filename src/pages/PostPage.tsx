@@ -1,12 +1,74 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Calendar, Clock, User, Tag } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, User, Tag, Copy, Check } from 'lucide-react';
 import { Post } from '../types';
 import { usePosts } from '../context/PostContext';
 import { formatDate } from '../utils/formatters';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import type { Components } from 'react-markdown';
+import AuthorBio from '../components/AuthorBio';
+import YouTubeEmbed from '../components/YouTubeEmbed';
+
+interface CodeBlockProps {
+  language: string;
+  children: string;
+}
+
+const CodeBlock = ({ language, children }: CodeBlockProps) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(children);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="relative">
+      <button 
+        className="code-copy-button"
+        onClick={handleCopy}
+        aria-label="Copy code"
+      >
+        {copied ? (
+          <>
+            <Check className="w-3 h-3 mr-1 inline" />
+            Copied!
+          </>
+        ) : (
+          <>
+            <Copy className="w-3 h-3 mr-1 inline" />
+            Copy
+          </>
+        )}
+      </button>
+      <SyntaxHighlighter
+        style={vscDarkPlus}
+        language={language}
+        PreTag="div"
+      >
+        {String(children).replace(/\n$/, '')}
+      </SyntaxHighlighter>
+    </div>
+  );
+};
+
+// Add custom link component
+const MarkdownLink = ({ href, children }: { href?: string; children: React.ReactNode }) => {
+  return (
+    <a 
+      href={href} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="hover:underline underline-offset-4 decoration-blue-500 transition-colors"
+    >
+      {children}
+    </a>
+  );
+};
 
 const PostPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -62,104 +124,138 @@ const PostPage = () => {
   }
 
   return (
-    <div className="pt-24 pb-16">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto">
-          <div className="mb-8">
-            <Link to="/" className="text-gray-400 hover:text-cyber-red-500 inline-flex items-center transition-colors">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Articles
-            </Link>
-          </div>
-          
-          {/* Post Header */}
-          <header className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">{post.title}</h1>
-            <div className="flex flex-wrap items-center text-sm text-gray-400 mb-6">
-              <div className="flex items-center mr-6 mb-2">
+    <>
+      {/* Hero Image Section */}
+      <div className="relative h-[50vh] min-h-[400px] w-full overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black z-10" />
+        {post?.coverImage && (
+          <img
+            src={post.coverImage}
+            alt={post.title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-20" />
+        
+        <div className="relative z-30 container mx-auto px-4 h-full flex flex-col justify-end pb-16">
+          <div className="max-w-4xl lg:max-w-5xl">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">{post?.title}</h1>
+            <div className="flex flex-wrap items-center text-sm text-gray-300 gap-6">
+              <div className="flex items-center">
                 <User className="h-4 w-4 mr-2" />
-                <span>{post.author}</span>
+                <span>{post?.author}</span>
               </div>
-              <div className="flex items-center mr-6 mb-2">
+              <div className="flex items-center">
                 <Calendar className="h-4 w-4 mr-2" />
-                <span>{formatDate(post.publishedAt)}</span>
+                <span>{post && formatDate(post.publishedAt)}</span>
               </div>
-              <div className="flex items-center mb-2">
+              <div className="flex items-center">
                 <Clock className="h-4 w-4 mr-2" />
-                <span>{post.readingTime} min read</span>
+                <span>{post?.readingTime} min read</span>
               </div>
             </div>
-          </header>
-          
-          {/* Post Content */}
-          <div className="prose prose-invert prose-red max-w-none mb-12">
-            <ReactMarkdown
-              components={{
-                code({node, inline, className, children, ...props}) {
-                  const match = /language-(\w+)/.exec(className || '')
-                  return !inline && match ? (
-                    <SyntaxHighlighter
-                      language={match[1]}
-                      style={vscDarkPlus}
-                      PreTag="div"
-                      {...props}
-                    >
-                      {String(children).replace(/\n$/, '')}
-                    </SyntaxHighlighter>
-                  ) : (
-                    <code className={className} {...props}>
-                      {children}
-                    </code>
-                  )
-                }
-              }}
-            >
-              {post.content || ''}
-            </ReactMarkdown>
-          </div>
-          
-          {/* Tags */}
-          {post.tags && post.tags.length > 0 && (
-            <div className="mb-12">
-              <div className="flex items-start">
-                <Tag className="h-5 w-5 text-gray-400 mr-2 mt-1" />
-                <div className="flex flex-wrap">
-                  {post.tags.map((tag, index) => (
-                    <Link
-                      key={index}
-                      to={`/search?tag=${encodeURIComponent(tag)}`}
-                      className="text-sm bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white px-3 py-1 rounded-full mr-2 mb-2 transition-colors"
-                    >
-                      {tag}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-          
-          {/* Author Bio */}
-          <div className="mb-12 bg-gray-800 rounded-lg p-6 border border-gray-700">
-            <div className="flex items-center mb-4">
-              <div className="w-12 h-12 rounded-full bg-cyber-red-500 mr-4 overflow-hidden">
-                <img
-                  src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=100"
-                  alt="Author"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="font-bold text-lg">{post.author}</h3>
-                <p className="text-gray-400 text-sm">Cybersecurity experts sharing knowledge and best practices.</p>
-              </div>
-            </div>
-            <p className="text-gray-300 text-sm">
-              The Moroccan Cyber Security Community is a collective of cybersecurity professionals and enthusiasts dedicated to advancing security awareness, education, and collaboration.
-            </p>
           </div>
         </div>
       </div>
-    </div>
+
+      <div className="py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl lg:max-w-5xl mx-auto">
+            <div className="mb-8">
+              <Link to="/" className="text-gray-400 hover:text-red-500 inline-flex items-center transition-colors">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Articles
+              </Link>
+            </div>
+            
+            {/* Post Content */}
+            <div className="prose prose-invert prose-red [&_.highlight-red]:!text-[#FF3333] [&_span.highlight-red]:!text-[#FF3333] max-w-none mb-12 prose-lg">
+              <ReactMarkdown
+                rehypePlugins={[rehypeRaw]}
+                components={{
+                  code: ({ className, children, ...props }: any) => {
+                    const match = /language-(\w+)/.exec(className || '');
+                    const lang = match ? match[1] : '';
+                    const isInline = !lang;
+                    
+                    if (!isInline) {
+                      return (
+                        <CodeBlock language={lang}>
+                          {String(children).replace(/\n$/, '')}
+                        </CodeBlock>
+                      );
+                    }
+                    
+                    return (
+                      <code className={className} {...props}>
+                        {children}
+                      </code>
+                    );
+                  },
+                  p: ({ node, children }) => {
+                    const childNode = node?.children[0];
+                    
+                    if (
+                      childNode?.type === 'text' &&
+                      typeof childNode.value === 'string'
+                    ) {
+                      if (childNode.value.startsWith('youtube:')) {
+                        const videoId = childNode.value.split('youtube:')[1].trim();
+                        return <YouTubeEmbed videoId={videoId} />;
+                      }
+                      
+                      if (childNode.value.startsWith('author:')) {
+                        try {
+                          const authorData = JSON.parse(childNode.value.split('author:')[1].trim());
+                          return (
+                            <AuthorBio
+                              name={authorData.name || post?.author || ''}
+                              avatar={authorData.avatar}
+                              role={authorData.role}
+                              description={authorData.description}
+                            />
+                          );
+                        } catch (e) {
+                          console.error('Failed to parse author data:', e);
+                          return (
+                            <AuthorBio name={post?.author || ''} />
+                          );
+                        }
+                      }
+                    }
+                    
+                    return <p>{children}</p>;
+                  },
+                  a: MarkdownLink
+                }}
+              >
+                {post?.content || ''}
+              </ReactMarkdown>
+            </div>
+            
+            {/* Tags */}
+            {post?.tags && post.tags.length > 0 && (
+              <div className="mb-12">
+                <div className="flex items-start">
+                  <Tag className="h-5 w-5 text-gray-400 mr-2 mt-1" />
+                  <div className="flex flex-wrap">
+                    {post.tags.map((tag, index) => (
+                      <Link
+                        key={index}
+                        to={`/search?tag=${encodeURIComponent(tag)}`}
+                        className="text-sm bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white px-3 py-1 rounded-full mr-2 mb-2 transition-colors"
+                      >
+                        {tag}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
