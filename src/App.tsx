@@ -8,8 +8,6 @@ import CommunityPage from './pages/CommunityPage';
 import SearchPage from './pages/SearchPage';
 import ArticlesPage from './pages/ArticlesPage';
 import NotFound from './pages/NotFound';
-import ShortenerPage from './pages/ShortenerPage';
-import RedirectPage from './pages/RedirectPage';
 import { PostProvider } from './context/PostContext';
 
 const router = createBrowserRouter(
@@ -21,8 +19,6 @@ const router = createBrowserRouter(
       <Route path="about" element={<AboutPage />} />
       <Route path="community" element={<CommunityPage />} />
       <Route path="search" element={<SearchPage />} />
-      <Route path="shor" element={<ShortenerPage />} />
-      <Route path=":code" element={<RedirectPage />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )

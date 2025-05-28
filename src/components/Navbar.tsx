@@ -69,9 +69,14 @@ const Navbar = () => {
             </Link>
             <button
               onClick={toggleSearch}
-              className="text-gray-300 hover:text-white transition-colors"
+              className="text-gray-300 hover:text-white transition-colors p-2 rounded-full hover:bg-gray-800"
+              aria-label={isSearchOpen ? 'Close search' : 'Open search'}
             >
-              <Search className="h-5 w-5" />
+              {isSearchOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Search className="h-5 w-5" />
+              )}
             </button>
           </div>
 
@@ -79,9 +84,14 @@ const Navbar = () => {
           <div className="flex items-center space-x-4 md:hidden">
             <button
               onClick={toggleSearch}
-              className="text-gray-300 hover:text-white transition-colors"
+              className="text-gray-300 hover:text-white transition-colors p-2 rounded-full hover:bg-gray-800"
+              aria-label={isSearchOpen ? 'Close search' : 'Open search'}
             >
-              <Search className="h-5 w-5" />
+              {isSearchOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Search className="h-5 w-5" />
+              )}
             </button>
             <button
               onClick={toggleMenu}
@@ -91,6 +101,13 @@ const Navbar = () => {
             </button>
           </div>
         </div>
+
+        {/* Search Bar */}
+        {isSearchOpen && (
+          <div className="py-4 border-t border-gray-800 animate-fade-in">
+            <SearchBar className="max-w-2xl mx-auto" />
+          </div>
+        )}
 
         {/* Mobile Menu */}
         {isMenuOpen && (
@@ -133,13 +150,6 @@ const Navbar = () => {
                 Community
               </Link>
             </div>
-          </div>
-        )}
-
-        {/* Search Bar */}
-        {isSearchOpen && (
-          <div className="py-4 border-t border-gray-800">
-            <SearchBar className="max-w-2xl mx-auto" />
           </div>
         )}
       </div>

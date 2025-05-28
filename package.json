@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://{username}.github.io/{repository-name}",
+  "homepage": "https://secjoseph.github.io/CyberSecMa",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,7 +13,6 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.49.4",
     "@types/node": "^22.15.18",
     "dayjs": "^1.11.10",
     "lucide-react": "^0.344.0",

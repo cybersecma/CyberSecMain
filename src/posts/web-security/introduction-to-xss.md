@@ -11,6 +11,7 @@ readingTime: 8
 ---
 
 **Cross-Site Scripting (XSS)** is one of the most common web vulnerabilities and is listed in the [<span class="highlight-blue">OWASP Top 10</span>](https://owasp.org/www-project-top-ten/). It allows attackers to inject malicious scripts into content viewed by other users, potentially leading to data theft, session hijacking, or defacement.
+![Cross-Site Scripting Attack Flow](https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)
 
 ## 📖 <span class="highlight-red">Types of XSS Attacks</span>
 
