@@ -57,7 +57,7 @@ const CodeBlock = ({ language, children }: CodeBlockProps) => {
 };
 
 // Add custom link component
-const MarkdownLink = ({ href, children }: { href?: string; children: React.ReactNode }) => {
+const MarkdownLink: Components['a'] = ({ href, children }) => {
   return (
     <a 
       href={href} 
@@ -137,10 +137,10 @@ const PostPage = () => {
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-20" />
         
-        <div className="relative z-30 container mx-auto px-4 h-full flex flex-col justify-end pb-16">
-          <div className="max-w-4xl lg:max-w-5xl">
+        <div className="relative z-30 container mx-auto px-4 h-full flex flex-col justify-center items-center pt-20">
+          <div className="max-w-4xl lg:max-w-5xl text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">{post?.title}</h1>
-            <div className="flex flex-wrap items-center text-sm text-gray-300 gap-6">
+            <div className="flex flex-wrap items-center justify-center text-sm text-gray-300 gap-6">
               <div className="flex items-center">
                 <User className="h-4 w-4 mr-2" />
                 <span>{post?.author}</span>
