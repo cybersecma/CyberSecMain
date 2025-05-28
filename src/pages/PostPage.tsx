@@ -167,12 +167,12 @@ const PostPage = () => {
                 Back to Articles
               </Link>
             </div>
-            
-            {/* Post Content */}
+          
+          {/* Post Content */}
             <div className="prose prose-invert prose-red [&_.highlight-red]:!text-[#FF3333] [&_span.highlight-red]:!text-[#FF3333] max-w-none mb-12 prose-lg">
-              <ReactMarkdown
+            <ReactMarkdown
                 rehypePlugins={[rehypeRaw]}
-                components={{
+              components={{
                   code: ({ className, children, ...props }: any) => {
                     const match = /language-(\w+)/.exec(className || '');
                     const lang = match ? match[1] : '';
@@ -181,15 +181,15 @@ const PostPage = () => {
                     if (!isInline) {
                       return (
                         <CodeBlock language={lang}>
-                          {String(children).replace(/\n$/, '')}
+                      {String(children).replace(/\n$/, '')}
                         </CodeBlock>
                       );
                     }
                     
                     return (
-                      <code className={className} {...props}>
-                        {children}
-                      </code>
+                    <code className={className} {...props}>
+                      {children}
+                    </code>
                     );
                   },
                   p: ({ node, children }) => {
@@ -230,28 +230,28 @@ const PostPage = () => {
                 }}
               >
                 {post?.content || ''}
-              </ReactMarkdown>
-            </div>
-            
-            {/* Tags */}
+            </ReactMarkdown>
+          </div>
+          
+          {/* Tags */}
             {post?.tags && post.tags.length > 0 && (
-              <div className="mb-12">
-                <div className="flex items-start">
-                  <Tag className="h-5 w-5 text-gray-400 mr-2 mt-1" />
-                  <div className="flex flex-wrap">
-                    {post.tags.map((tag, index) => (
-                      <Link
-                        key={index}
-                        to={`/search?tag=${encodeURIComponent(tag)}`}
-                        className="text-sm bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white px-3 py-1 rounded-full mr-2 mb-2 transition-colors"
-                      >
-                        {tag}
-                      </Link>
-                    ))}
-                  </div>
+            <div className="mb-12">
+              <div className="flex items-start">
+                <Tag className="h-5 w-5 text-gray-400 mr-2 mt-1" />
+                <div className="flex flex-wrap">
+                  {post.tags.map((tag, index) => (
+                    <Link
+                      key={index}
+                      to={`/search?tag=${encodeURIComponent(tag)}`}
+                      className="text-sm bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white px-3 py-1 rounded-full mr-2 mb-2 transition-colors"
+                    >
+                      {tag}
+                    </Link>
+                  ))}
                 </div>
               </div>
-            )}
+            </div>
+          )}
           </div>
         </div>
       </div>

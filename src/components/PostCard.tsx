@@ -51,14 +51,14 @@ const PostCard = ({ post, featured = false }: PostCardProps) => {
           
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4 text-sm text-gray-400">
-              <div className="flex items-center">
+            <div className="flex items-center">
                 <User className="h-4 w-4 mr-2" />
-                <span>{post.author}</span>
-              </div>
-              <div className="flex items-center">
+              <span>{post.author}</span>
+            </div>
+            <div className="flex items-center">
                 <Clock className="h-4 w-4 mr-2" />
-                <span>{formatDate(post.publishedAt)}</span>
-              </div>
+              <span>{formatDate(post.publishedAt)}</span>
+            </div>
             </div>
             
             <ArrowRight className="h-5 w-5 text-red-500 transform transition-transform duration-300 group-hover:translate-x-1" />

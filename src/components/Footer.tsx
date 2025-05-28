@@ -10,29 +10,29 @@ const Footer = () => {
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2">
               <Shield className="w-6 h-6 text-red-500" />
-              <span className="text-xl font-bold tracking-tight">
+                  <span className="text-xl font-bold tracking-tight">
                 <span className="text-white">cyber</span>
                 <span className="text-red-500">sec.ma</span>
-              </span>
-            </Link>
+                  </span>
+                </Link>
             <p className="text-gray-400 text-sm">
-              Join Morocco's leading cybersecurity community for the latest insights, news, and techniques from our expert network.
-            </p>
+                  Join Morocco's leading cybersecurity community for the latest insights, news, and techniques from our expert network.
+                </p>
             <div className="flex items-center space-x-4">
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Twitter className="w-5 h-5" />
-              </a>
+                  </a>
               <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Github className="w-5 h-5" />
-              </a>
+                  </a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Linkedin className="w-5 h-5" />
-              </a>
+                  </a>
               <a href="mailto:contact@cybersec.ma" className="text-gray-400 hover:text-white transition-colors">
                 <Mail className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
+                  </a>
+                </div>
+              </div>
 
           {/* Resources Section */}
           <div>
@@ -56,8 +56,8 @@ const Footer = () => {
               <li>
                 <Link to="/forum" className="text-gray-400 hover:text-white transition-colors">Community Forum</Link>
               </li>
-            </ul>
-          </div>
+                </ul>
+              </div>
 
           {/* Get Involved Section */}
           <div>
@@ -78,8 +78,8 @@ const Footer = () => {
               <li>
                 <Link to="/report" className="text-gray-400 hover:text-white transition-colors">Report a Vulnerability</Link>
               </li>
-            </ul>
-          </div>
+                </ul>
+              </div>
 
           {/* Discord Section */}
           <div>
@@ -87,22 +87,22 @@ const Footer = () => {
             <p className="text-gray-400 text-sm mb-4">
               Connect with the community in real time, ask questions, and join discussions.
             </p>
-            <a
+                <a
               href="https://discord.gg/your-invite"
-              target="_blank"
-              rel="noopener noreferrer"
+                  target="_blank"
+                  rel="noopener noreferrer"
               className="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
-            >
-              Join Discord
-            </a>
-          </div>
-        </div>
+                >
+                  Join Discord
+                </a>
+              </div>
+            </div>
 
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-gray-800">
           <p className="text-center text-gray-500 text-sm">
             © {new Date().getFullYear()} cybersec.ma. All rights reserved.
-          </p>
+            </p>
         </div>
       </div>
     </footer>
