@@ -6,18 +6,13 @@ Before you begin, ensure you have installed:
 
 ## Installation
 
-1. Clone the repository:
-```bash
-git clone https://github.com/your-username/cyber-security-blog.git
-cd cyber-security-blog
-```
 
-2. Install dependencies:
+1. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Configure the project:
+2. Configure the project:
    - Rename the repository name in `vite.config.ts`:
      - Update `base: '/repository-name/'` with your actual repository name
    - Update the homepage in `package.json`:
