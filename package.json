@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://secjoseph.github.io/CyberSecMa",
+  "homepage": "https://secjoseph.github.io/CyberSecMa", //to be changed with cybersec.ma
   "scripts": {
     "dev": "vite",
     "build": "vite build",
