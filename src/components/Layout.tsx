@@ -7,7 +7,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 const Layout = () => {
   useEffect(() => {
     // Update document title
-    document.title = 'CyberPulse | Cybersecurity Community Blog';
+    document.title = 'CyberSec.ma | Moroccan Cybersecurity Community';
     
     // Update favicon
     const favicon = document.querySelector("link[rel='icon']") as HTMLLinkElement;
