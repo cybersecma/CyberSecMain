@@ -27,14 +27,16 @@ const PostCard = ({ post, featured = false }: PostCardProps) => {
         className="block h-full focus:outline-none focus:ring-2 focus:ring-red-500"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
-        <div className={`relative ${featured ? 'h-72' : 'h-56'}`}>
+        <div className={`relative ${featured ? 'h-72' : 'h-56'} overflow-hidden`}>
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent z-10"></div>
-          <img 
-            src={imageUrl} 
-            alt={post.title} 
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            onError={e => (e.currentTarget.src = FALLBACK_IMAGE)}
-          />
+          <div className="w-full h-full">
+            <img 
+              src={imageUrl} 
+              alt={post.title} 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              onError={e => (e.currentTarget.src = FALLBACK_IMAGE)}
+            />
+          </div>
         </div>
         
         <div className="relative z-20 p-6 -mt-20">
