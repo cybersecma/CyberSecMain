@@ -1,4 +1,11 @@
-import { BrowserRouter as Router, Routes, Route, createRoutesFromElements, createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { 
+  HashRouter,
+  Routes,
+  Route,
+  createRoutesFromElements,
+  createHashRouter,
+  RouterProvider 
+} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -10,7 +17,8 @@ import ArticlesPage from './pages/ArticlesPage';
 import NotFound from './pages/NotFound';
 import { PostProvider } from './context/PostContext';
 
-const router = createBrowserRouter(
+// Changed from createBrowserRouter to createHashRouter
+const router = createHashRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
@@ -28,7 +36,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading for a smoother transition
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1500);
