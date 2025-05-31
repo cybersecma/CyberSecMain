@@ -12,7 +12,7 @@ readingTime: 3
 
 # 🛡️ SQL Injection Basics
 
-SQL Injection (SQLi) is a code injection technique that attackers use to exploit vulnerabilities in an application's software by injecting malicious SQL statements.
+SQL Injection (SQLi) is a code injection technique that attackers use to exploit vulnerabilities in an application's software by injecting malicious SQL statements,
 
 ## Example
 
