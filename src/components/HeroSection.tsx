@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Shield } from 'lucide-react';
+import { ArrowRight, Shield, Linkedin, MessageSquareText, Bot } from 'lucide-react';
 
 const HeroSection = () => {
   return (
@@ -27,14 +27,40 @@ const HeroSection = () => {
             <p className="text-gray-300 text-lg mb-8 leading-relaxed max-w-lg">
               Join Morocco's leading community of security professionals sharing insights, techniques, and the latest developments in cyber defense and offensive security.
             </p>
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <Link to="/articles" className="btn btn-primary">
-                Latest Articles
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-              <Link to="/community" className="btn btn-secondary">
-                Join Us
-              </Link>
+
+            {/* "Join Us" Text */}
+            <div className="mb-4">
+              <p className="font-mono text-gray-400">Join us on:</p>
+            </div>
+            
+            <div className="flex space-x-4">
+              <a 
+                href="https://www.linkedin.com/groups/10081631/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-linkedin"
+                aria-label="Join our LinkedIn group"
+              >
+                <Linkedin className="h-7 w-7" />
+              </a>
+              <a 
+                href="https://chat.whatsapp.com/EXp857CsQSdL5m2ZauHKgh" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-whatsapp"
+                aria-label="Join our WhatsApp group"
+              >
+                <MessageSquareText className="h-7 w-7" />
+              </a>
+              <a 
+                href="https://discord.com/invite/GhX2KzNqRZ" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-discord"
+                aria-label="Join our Discord server"
+              >
+                <Bot className="h-7 w-7" />
+              </a>
             </div>
           </div>
           

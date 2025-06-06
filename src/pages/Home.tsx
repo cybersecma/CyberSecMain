@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import HeroSection from '../components/HeroSection';
-import FeaturedPost from '../components/FeaturedPost';
 import { usePosts } from '../context/PostContext';
+import PostList from '../components/PostList';
+import EmbeddedVideo from '../components/EmbeddedVideo';
 
 const Home = () => {
   const { posts, loading, error, fetchPosts } = usePosts();
@@ -44,23 +45,25 @@ const Home = () => {
   return (
     <div className="animate-fade-in">
       <HeroSection />
-      {featuredPosts.length > 0 && (
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 transition-colors duration-300 hover:text-red-500">Featured Articles</h2>
-            <div className="flex flex-col gap-6">
-              {featuredPosts.map((post, index) => (
-                <div 
-                  key={post.id} 
-                  className="animate-fade-in" 
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  <FeaturedPost post={post} hideLabel />
-                </div>
-              ))}
-            </div>
+
+      {/* Streams & Videos Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">Streams & Videos</h2>
+          <p className="text-gray-400 mb-10">Watch our latest hangouts, tutorials, and live sessions.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <EmbeddedVideo videoId="XMi8ZSESJA4" title="Ask Me Anything" />
+            <EmbeddedVideo videoId="VJkhcd5B-qc" title="CyberSec Hangout" />
           </div>
-        </section>
+        </div>
+      </section>
+
+      {featuredPosts.length > 0 && (
+        <PostList 
+          posts={featuredPosts}
+          title="Featured Articles"
+          description="Hand-picked articles from our team, covering the latest in cybersecurity."
+        />
       )}
     </div>
   );

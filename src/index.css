@@ -345,3 +345,30 @@
   color: #D4D4D4 !important;
   text-shadow: none !important;
 }
+
+@layer utilities {
+  .shadow-red-glow {
+    box-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
+  }
+}
+
+/* Custom Social Button Styles */
+.btn-social {
+  /* Larger, circular buttons with a new hover effect */
+  @apply btn p-4 rounded-full text-white transition-all duration-300 ease-in-out transform hover:scale-110 hover:brightness-125;
+}
+
+.btn-linkedin {
+  /* Default background color, inherits from btn-social */
+  @apply btn-social bg-[#0A66C2] border-[#0A66C2];
+}
+
+.btn-whatsapp {
+  /* Default background color, inherits from btn-social */
+  @apply btn-social bg-[#25D366] border-[#25D366];
+}
+
+.btn-discord {
+  /* Default background color, inherits from btn-social */
+  @apply btn-social bg-[#5865F2] border-[#5865F2];
+}

@@ -12,6 +12,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "@types/node": "^20.11.24",
     "dayjs": "^1.11.10",
     "lucide-react": "^0.344.0",
