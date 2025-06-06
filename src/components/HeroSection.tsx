@@ -30,7 +30,7 @@ const HeroSection = () => {
 
             {/* "Join Us" Text */}
             <div className="mb-4">
-              <p className="font-mono text-gray-400">Join us on:</p>
+              <p className="font-mono text-gray-400">Join us in Discord / Linkedin / WhatsApp:</p>
             </div>
             
             <div className="flex space-x-4">
