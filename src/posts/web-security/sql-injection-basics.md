@@ -39,7 +39,7 @@ The application naively stitches this input into the query, resulting in:
 SELECT * FROM users WHERE username = '' OR '1'='1' AND password = 'some_password';
 ```
 
-Because `'1'='1'` is always true, the `WHERE` clause evaluates to true for *every single user*. The database then returns all users, and the attacker is likely logged in as the first user in the table—often an admin.
+Because `'1'='1'` is always true, the `WHERE` clause evaluates to true for *every single user*. The database then returns all users, and the attacker is likely logged in as the first user in the table, often an admin.
 
 ## How to Defend Your Fortress: Prevention is Key
 

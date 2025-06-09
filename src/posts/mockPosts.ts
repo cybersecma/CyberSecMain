@@ -39,7 +39,7 @@ If profile.ejs uses the username like this:
 <h1>Welcome <%= username %></h1>
 \`\`\`
 
-Then visiting /profile?username=<script>alert('XSS')</script> will trigger an alert box in the browser — a basic reflected XSS attack.
+Then visiting /profile?username=<script>alert('XSS')</script> will trigger an alert box in the browser , a basic reflected XSS attack.
 
 ## ✅ How to Fix It
 
