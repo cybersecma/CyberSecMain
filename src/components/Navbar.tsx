@@ -35,6 +35,9 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
+            <div className={`flex items-center space-x-8 transition-all duration-300 ease-in-out ${
+              isSearchOpen ? 'translate-x-[-100px] opacity-0' : 'translate-x-0 opacity-100'
+            }`}>
             <Link 
               to="/" 
               className={`text-sm font-medium transition-colors ${
@@ -75,6 +78,12 @@ const Navbar = () => {
             >
               Community
             </Link>
+            </div>
+            <div className={`transition-all duration-300 ease-in-out ${
+              isSearchOpen ? 'w-[600px] opacity-100' : 'w-0 opacity-0'
+            } overflow-hidden`}>
+              <SearchBar className="w-full" onSearch={() => setIsSearchOpen(false)} />
+            </div>
             <button
               onClick={toggleSearch}
               className="text-gray-300 hover:text-white transition-colors p-2 rounded-full hover:bg-gray-800"
@@ -110,9 +119,9 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Search Bar */}
+        {/* Search Bar - Mobile */}
         {isSearchOpen && (
-          <div className="py-4 border-t border-gray-800 animate-fade-in">
+          <div className="md:hidden py-4 border-t border-gray-800 animate-fade-in">
             <SearchBar className="max-w-2xl mx-auto" />
           </div>
         )}

@@ -4,8 +4,8 @@ import { Shield, Book, Users, MessageSquareText, Linkedin, Bot } from 'lucide-re
 const Footer = () => {
   return (
     <footer className="bg-black border-t border-gray-800">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div className="container mx-auto px-6 py-6 justify-center center-items">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-20 justify-items-center">
           {/* Brand Section */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2">
@@ -16,8 +16,7 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-gray-400 text-sm">
-              Morocco's leading cybersecurity community.
-            </p>
+            Morocco's leading cybersecurity community.            </p>
             {/* Social Buttons */}
             <div className="flex space-x-3 pt-2">
               <a 
@@ -84,7 +83,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
+        <div className="mt-5 pt-8 border-t border-gray-800">
           <p className="text-center text-gray-500 text-sm">
             © {new Date().getFullYear()} cybersec.ma. All rights reserved.
           </p>

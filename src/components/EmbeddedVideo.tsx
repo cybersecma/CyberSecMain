@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Play } from 'lucide-react';
 
 interface EmbeddedVideoProps {
   videoId: string;
@@ -6,19 +7,43 @@ interface EmbeddedVideoProps {
 }
 
 const EmbeddedVideo: React.FC<EmbeddedVideoProps> = ({ videoId, title }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const thumbnailUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+
   return (
-    <div className="bg-gray-900 rounded-lg border border-gray-800 p-4 shadow-lg overflow-hidden">
-      <div className="aspect-w-4 aspect-h-3">
+    <div className="group bg-gradient-to-br from-gray-900 to-black rounded-xl border border-gray-800 p-4 hover:border-red-500/30 transition-all duration-300 shadow-lg overflow-hidden">
+      <div className="relative aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
+        {!isPlaying ? (
+          <button
+            onClick={() => setIsPlaying(true)}
+            className="absolute inset-0 w-full h-full flex items-center justify-center group cursor-pointer"
+            aria-label="Play video"
+          >
+            <img
+              src={thumbnailUrl}
+              alt={title}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              onError={(e) => {
+                e.currentTarget.src = `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`;
+              }}
+            />
+            <div className="absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:bg-black/50" />
+            <div className="relative z-10 w-16 h-16 flex items-center justify-center rounded-full bg-red-600 transition-transform duration-300 group-hover:scale-110 group-hover:bg-red-700">
+              <Play className="w-8 h-8 text-white fill-white" />
+            </div>
+          </button>
+        ) : (
         <iframe
-          src={`https://www.youtube.com/embed/${videoId}`}
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
           title={title}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-          className="w-full h-full"
-        ></iframe>
+            className="absolute top-0 left-0 w-full h-full rounded-lg"
+          />
+        )}
       </div>
-      <h3 className="text-lg font-bold mt-4 text-white">{title}</h3>
+      <h3 className="text-lg font-bold mt-4 text-white group-hover:text-red-500 transition-colors duration-300">{title}</h3>
     </div>
   );
 };

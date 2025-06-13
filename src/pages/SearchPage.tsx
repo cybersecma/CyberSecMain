@@ -4,38 +4,67 @@ import { usePosts } from '../context/PostContext';
 import PostList from '../components/PostList';
 import SearchBar from '../components/SearchBar';
 import { Post } from '../types';
-import { Search as SearchIcon, ArrowLeft } from 'lucide-react';
+import { Search as SearchIcon, ArrowLeft, Video, FileText } from 'lucide-react';
+import { streams } from '../data/streams';
+import EmbeddedVideo from '../components/EmbeddedVideo';
 
 const SearchPage = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const query = queryParams.get('q') || '';
   const tagQuery = queryParams.get('tag') || '';
+  const type = queryParams.get('type') || 'all';
   
   const { posts, loading, error, fetchPosts } = usePosts();
-  const [searchResults, setSearchResults] = useState<Post[]>([]);
+  const [searchResults, setSearchResults] = useState<{
+    posts: Post[];
+    streams: typeof streams;
+  }>({ posts: [], streams: [] });
   
   useEffect(() => {
     if (posts.length === 0) {
       fetchPosts();
     } else {
-      let results: Post[] = [];
+      let postResults: Post[] = [];
+      let streamResults = streams;
       
       if (query) {
-        results = posts.filter(post => 
+        // Search posts
+        postResults = posts.filter(post => 
           post.title.toLowerCase().includes(query.toLowerCase()) ||
           post.excerpt.toLowerCase().includes(query.toLowerCase()) ||
           (post.content && post.content.toLowerCase().includes(query.toLowerCase()))
         );
+        
+        // Search streams
+        streamResults = streams.filter(stream =>
+          stream.title.toLowerCase().includes(query.toLowerCase()) ||
+          stream.description.toLowerCase().includes(query.toLowerCase()) ||
+          stream.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
+        );
       } else if (tagQuery) {
-        results = posts.filter(post => 
+        postResults = posts.filter(post => 
           post.tags && post.tags.some(tag => tag.toLowerCase() === tagQuery.toLowerCase())
+        );
+        streamResults = streams.filter(stream =>
+          stream.tags.some(tag => tag.toLowerCase() === tagQuery.toLowerCase())
         );
       }
       
-      setSearchResults(results);
+      // Filter based on type
+      if (type !== 'all') {
+        if (type === 'articles') {
+          streamResults = [];
+        } else if (type === 'streams') {
+          postResults = [];
+        }
+      }
+      
+      setSearchResults({ posts: postResults, streams: streamResults });
     }
-  }, [query, tagQuery, posts, fetchPosts]);
+  }, [query, tagQuery, type, posts, fetchPosts]);
+  
+  const totalResults = searchResults.posts.length + searchResults.streams.length;
   
   if (loading) {
     return (
@@ -73,29 +102,69 @@ const SearchPage = () => {
           </Link>
         </div>
         
-        <div className="mb-12">
-          <div className="flex items-center mb-8">
+        <div className="mb-8">
+          <div className="flex mb-4">
             <SearchIcon className="h-8 w-8 text-cyber-red-500 mr-3" />
-            <h1 className="text-3xl md:text-4xl font-bold">
-              {query ? `Search Results: "${query}"` : tagQuery ? `Articles tagged: "${tagQuery}"` : 'Search Articles'}
+            <h1 className="text-3xl md:text-4xl font-bold text-white">
+              {query ? `Search Results: "${query}"` : tagQuery ? `Content tagged: "${tagQuery}"` : 'Search Content'}
             </h1>
           </div>
           
-          <SearchBar initialQuery={query} className="max-w-2xl mb-8" />
+          <SearchBar initialQuery={query} className="max-w-2xl mb-4" />
           
           {(query || tagQuery) && (
             <p className="text-gray-300">
-              Found {searchResults.length} {searchResults.length === 1 ? 'result' : 'results'}
+              Found {totalResults} {totalResults === 1 ? 'result' : 'results'}
             </p>
           )}
         </div>
         
         {(query || tagQuery) ? (
-          searchResults.length > 0 ? (
-            <PostList posts={searchResults} />
+          totalResults > 0 ? (
+            <div className="space-y-12">
+              {searchResults.posts.length > 0 && (
+                <section>
+                  <div className="flex items-center mb-6">
+                    <FileText className="h-6 w-6 text-cyber-red-500 mr-2" />
+                    <p className="text-2xl font-bold text-white">Articles</p>
+                    <span className="ml-4 px-3 py-1  bg-red-500/10 border border-red-500/30 rounded-md text-red-500 text-sm">
+                      {searchResults.posts.length} results
+                    </span>
+                  </div>
+                  <PostList posts={searchResults.posts} />
+                </section>
+              )}
+              
+              {searchResults.streams.length > 0 && (
+                <section>
+                  <div className="flex items-center mb-6">
+                    <Video className="h-6 w-6 text-cyber-red-500 mr-2" />
+                    <p className="text-2xl font-bold text-white">Streams</p>
+                    <span className="ml-4 px-3 py-1 bg-red-500/10 border border-red-500/30 rounded-md text-red-500 text-sm">
+                      {searchResults.streams.length} results
+                    </span>
+                  </div>
+                  <div className="grid gap-8 md:grid-cols-2">
+                    {searchResults.streams.map((stream, index) => (
+                      <div 
+                        key={stream.id} 
+                        className="animate-fade-in" 
+                        style={{ 
+                          animationDuration: '1s', 
+                          animationDelay: `${0.3 + (index * 0.1)}s`, 
+                          animationFillMode: 'both' 
+                        }}
+                      >
+                        <EmbeddedVideo videoId={stream.videoId} title={stream.title} />
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+            </div>
           ) : (
             <div className="py-20 text-center">
-              <h3 className="text-xl mb-4">No posts found</h3>
+              <h3 className="text-xl mb-4">No results found</h3>
               <p className="text-gray-400 mb-8">Try searching with different keywords.</p>
               <Link to="/" className="btn btn-primary">
                 Back to Home
@@ -104,7 +173,7 @@ const SearchPage = () => {
           )
         ) : (
           <div className="py-20 text-center">
-            <h3 className="text-xl mb-4">Enter a search term to find articles</h3>
+            <h3 className="text-xl mb-4">Enter a search term to find content</h3>
             <p className="text-gray-400">Search by keyword, title, or content</p>
           </div>
         )}
