@@ -177,6 +177,23 @@ const PostPage = () => {
             <ReactMarkdown
                 rehypePlugins={[rehypeRaw]}
               components={{
+                  img: ({ src, alt, ...props }: any) => {
+                    // Handle relative paths from posts directory
+                    let imageSrc = src;
+                    if (src?.startsWith('../media/')) {
+                      // Convert relative path to public images folder
+                      imageSrc = src.replace('../media/', '/images/');
+                    }
+                    
+                    return (
+                      <img 
+                        src={imageSrc} 
+                        alt={alt || ''} 
+                        className="max-w-full h-auto rounded-lg shadow-lg my-6 mx-auto block"
+                        {...props} 
+                      />
+                    );
+                  },
                   code: ({ className, children, ...props }: any) => {
                     const match = /language-(\w+)/.exec(className || '');
                     const lang = match ? match[1] : '';
