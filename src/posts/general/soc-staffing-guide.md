@@ -13,6 +13,8 @@ categories: ["SOC Operations", "Security Management"]
 tags: ["SOC", "Security Operations", "Staffing", "Budget Planning", "Team Management"]
 readingTime: 11
 pinned: false
+hide: true
+
 
 ---
 
