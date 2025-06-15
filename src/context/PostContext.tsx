@@ -34,8 +34,9 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
       // Use startTransition for state updates
       startTransition(() => {
         setPosts(fetchedPosts.map(post => ({
-        ...post,
-        author: "Moroccan Cyber Security Community"
+          ...post,
+          // Provide fallback author if not specified
+          author: post.author || "Moroccan Cyber Security Community"
         })));
       });
     } catch (err) {

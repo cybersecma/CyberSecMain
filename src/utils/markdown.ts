@@ -38,24 +38,33 @@ const parseFrontmatter = (content: string): { data: any; content: string } => {
 };
 
 export const getPostFromFile = async (filePath: string, content: string): Promise<Post & { pinned?: boolean }> => {
-  const { data, content: markdownContent } = parseFrontmatter(content);
-  const filename = filePath.split('/').pop() || '';
-  return {
-    id: data.id || getPostSlugFromFilename(filename),
-    title: data.title,
-    slug: data.slug || getPostSlugFromFilename(filename),
-    excerpt: data.excerpt,
-    content: markdownContent,
-    author: data.author,
-    authorAvatar: data.authorAvatar,
-    publishedAt: data.publishedAt,
-    updatedAt: data.updatedAt,
-    coverImage: data.coverImage,
-    thumbnail: data.thumbnail,
-    tags: data.tags || [],
-    readingTime: data.readingTime || Math.ceil(markdownContent.split(/\s+/).length / 200),
-    pinned: data.pinned === true || data.pinned === 'true',
-  };
+  try {
+    const { data, content: markdownContent } = parseFrontmatter(content);
+    const filename = filePath.split('/').pop() || '';
+    
+    // Ensure required fields have default values
+    const post = {
+      id: data.id || getPostSlugFromFilename(filename),
+      title: data.title || 'Untitled',
+      slug: data.slug || getPostSlugFromFilename(filename),
+      excerpt: data.excerpt || '',
+      content: markdownContent,
+      author: data.author || 'Unknown Author',
+      authorAvatar: data.authorAvatar,
+      publishedAt: data.publishedAt || new Date().toISOString(),
+      updatedAt: data.updatedAt,
+      coverImage: data.coverImage || '',
+      thumbnail: data.thumbnail,
+      tags: data.tags || [],
+      readingTime: data.readingTime || Math.ceil(markdownContent.split(/\s+/).length / 200),
+      pinned: data.pinned === true || data.pinned === 'true',
+    };
+    
+    return post;
+  } catch (error) {
+    console.error('Error processing file:', filePath, error);
+    throw error;
+  }
 };
 
 export const getAllPosts = async (): Promise<(Post & { pinned?: boolean })[]> => {

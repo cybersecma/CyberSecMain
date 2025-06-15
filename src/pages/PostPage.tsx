@@ -250,6 +250,18 @@ const PostPage = () => {
             </ReactMarkdown>
           </div>
           
+          {/* Author Bio Section */}
+          {post?.author && (
+            <div className="mb-12">
+              <AuthorBio
+                name={post.author}
+                avatar={post.authorAvatar}
+                role="Cybersecurity Expert"
+                description={`${post.author} is a cybersecurity professional sharing knowledge and expertise in the field.`}
+              />
+            </div>
+          )}
+          
           {/* Tags */}
             {post?.tags && post.tags.length > 0 && (
             <div className="mb-12">
