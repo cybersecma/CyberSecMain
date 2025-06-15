@@ -2,9 +2,11 @@
 title: "🤖 Understanding Botnets: The Hidden Threat"
 slug: "understanding-botnets-hidden-threat"
 excerpt: "Explore the world of botnets, how they operate, and how to protect yourself from these malicious networks."
-author: "Moroccan Cyber Security Community"
-publishedAt: "2024-06-03T10:00:00Z"
-coverImage: "https://example.com/image.jpg"
+author: "El Hassan EL AMRI"
+authorAvatar: "/images/authors/el-hassan.jpg"
+publishedAt: "2025-06-15T10:00:00Z"
+coverImage: "/videos/botnet-on-computer-screen-and-hacking-background-2025-05-29-00-30-31-utc.mp4"
+thumbnail: "/videos/botnet-on-computer-screen-and-hacking-background-2025-05-29-00-30-31-utc.mp4"
 categories: ["General Security", "Malware"]
 tags: ["Botnets", "Malware", "Cybersecurity", "Network Security"]
 readingTime: 6
@@ -63,7 +65,7 @@ Bots connect to one or more C&C servers to receive instructions. These
 servers, in turn, receive attack directives from the botmaster, which
 are relayed across the entire network.
 
-![Centralized Botnet Architecture - Client-Server Model](../media/image.png)
+![Centralized Botnet Architecture - Client-Server Model](/images/image.png)
 
 **2. Decentralized --- Peer-to-Peer (P2P) Model**
 
@@ -78,7 +80,7 @@ propagates the instructions throughout the network. This model
 significantly enhances **resilience and stealth**, making the botnet
 harder to dismantle.
 
-![Decentralized Botnet Architecture - Peer-to-Peer Model](../media/image2.png)
+![Decentralized Botnet Architecture - Peer-to-Peer Model](/images/image2.png)
 
 **What Types of Attacks Involve Botnets?**
 
@@ -162,3 +164,13 @@ beneficial. A few examples:
 
 - **Customer service bots** provide automated support and improve
   response times.
+
+**Conclusion**
+
+Botnets represent a significant and evolving threat in the landscape of
+cybersecurity. By understanding the mechanics of how botnets operate and
+the various forms they can take, individuals and organizations can
+better prepare and defend against these malicious networks. Remember,
+the key to cybersecurity lies in **vigilance, education, and
+implementation of robust security measures**. Stay safe, and don\'t let
+the bots bite!

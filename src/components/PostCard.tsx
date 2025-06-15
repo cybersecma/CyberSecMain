@@ -12,7 +12,8 @@ interface PostCardProps {
 }
 
 const PostCard = ({ post, featured = false }: PostCardProps) => {
-  const imageUrl = post.coverImage || FALLBACK_IMAGE;
+  const imageUrl = post.thumbnail || post.coverImage || FALLBACK_IMAGE;
+  const isVideo = imageUrl.endsWith('.mp4') || imageUrl.endsWith('.webm') || imageUrl.endsWith('.mov');
   
   return (
     <article 
@@ -30,12 +31,34 @@ const PostCard = ({ post, featured = false }: PostCardProps) => {
         <div className={`relative ${featured ? 'h-72' : 'h-56'} overflow-hidden`}>
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent z-10"></div>
           <div className="w-full h-full">
-            <img 
-              src={imageUrl} 
-              alt={post.title} 
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              onError={e => (e.currentTarget.src = FALLBACK_IMAGE)}
-            />
+            {isVideo ? (
+              <video 
+                src={imageUrl} 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                muted
+                loop
+                playsInline
+                onError={e => {
+                  e.currentTarget.style.display = 'none';
+                  const fallbackImg = document.createElement('img');
+                  fallbackImg.src = FALLBACK_IMAGE;
+                  fallbackImg.className = "w-full h-full object-cover transition-transform duration-700 group-hover:scale-105";
+                  e.currentTarget.parentNode?.appendChild(fallbackImg);
+                }}
+                onLoadedData={e => {
+                  (e.currentTarget as HTMLVideoElement).play().catch(() => {
+                    // If autoplay fails, that's okay
+                  });
+                }}
+              />
+            ) : (
+              <img 
+                src={imageUrl} 
+                alt={post.title} 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                onError={e => (e.currentTarget.src = FALLBACK_IMAGE)}
+              />
+            )}
           </div>
         </div>
         

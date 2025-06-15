@@ -129,11 +129,24 @@ const PostPage = () => {
       <div className="relative h-[50vh] min-h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black z-10" />
         {post?.coverImage && (
-          <img
-            src={post.coverImage}
-            alt={post.title}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+          <>
+            {post.coverImage.endsWith('.mp4') || post.coverImage.endsWith('.webm') || post.coverImage.endsWith('.mov') ? (
+              <video
+                src={post.coverImage}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            ) : (
+              <img
+                src={post.coverImage}
+                alt={post.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            )}
+          </>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-20" />
         
@@ -177,23 +190,6 @@ const PostPage = () => {
             <ReactMarkdown
                 rehypePlugins={[rehypeRaw]}
               components={{
-                  img: ({ src, alt, ...props }: any) => {
-                    // Handle relative paths from posts directory
-                    let imageSrc = src;
-                    if (src?.startsWith('../media/')) {
-                      // Convert relative path to public images folder
-                      imageSrc = src.replace('../media/', '/images/');
-                    }
-                    
-                    return (
-                      <img 
-                        src={imageSrc} 
-                        alt={alt || ''} 
-                        className="max-w-full h-auto rounded-lg shadow-lg my-6 mx-auto block"
-                        {...props} 
-                      />
-                    );
-                  },
                   code: ({ className, children, ...props }: any) => {
                     const match = /language-(\w+)/.exec(className || '');
                     const lang = match ? match[1] : '';

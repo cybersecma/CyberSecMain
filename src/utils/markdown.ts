@@ -51,6 +51,7 @@ export const getPostFromFile = async (filePath: string, content: string): Promis
     publishedAt: data.publishedAt,
     updatedAt: data.updatedAt,
     coverImage: data.coverImage,
+    thumbnail: data.thumbnail,
     tags: data.tags || [],
     readingTime: data.readingTime || Math.ceil(markdownContent.split(/\s+/).length / 200),
     pinned: data.pinned === true || data.pinned === 'true',

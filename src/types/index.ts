@@ -9,6 +9,7 @@ export interface Post {
   publishedAt: string;
   updatedAt?: string;
   coverImage: string;
+  thumbnail?: string;
   tags?: string[];
   readingTime: number;
   comments?: Comment[];
