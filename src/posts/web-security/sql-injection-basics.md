@@ -3,11 +3,15 @@ title: "🛡️ Diving Deep into SQL Injection"
 slug: "sql-injection-basics"
 excerpt: "A comprehensive look at SQL Injection fundamentals. Learn what it is, see how attackers exploit it, and discover robust ways to defend your applications."
 author: "Moroccan Cyber Security Community"
+authorAvatar: "/images/authors/community.jpeg"
+authorRole: "Cybersecurity Community"
+authorBio: "The Moroccan Cyber Security Community is a collective of cybersecurity professionals and enthusiasts dedicated to advancing security awareness, education, and collaboration across Morocco."
 publishedAt: "2024-06-02T10:00:00Z"
 coverImage: "https://images.unsplash.com/photo-1593425593436-a827767def44?auto=format&fit=crop&w=1200&q=80"
 tags: ["SQL Injection", "Cybersecurity", "Web Security", "OWASP", "Database"]
 readingTime: 6
-pinned: true
+pinned: false
+hide: true
 ---
 
 # 🛡️ Diving Deep into SQL Injection

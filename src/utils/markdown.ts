@@ -1,7 +1,7 @@
 import { Post } from '../types';
 
 // Import all markdown files from the posts directory and its subdirectories
-const posts = import.meta.glob('../posts/**/*.md', { as: 'raw' });
+const posts = import.meta.glob('../posts/**/*.md', { query: '?raw', import: 'default' });
 
 export const getPostSlugFromFilename = (filename: string): string => {
   return filename.replace(/\.md$/, '').split('/').pop() || '';
@@ -40,9 +40,7 @@ const parseFrontmatter = (content: string): { data: any; content: string } => {
 export const getPostFromFile = async (filePath: string, content: string): Promise<Post & { pinned?: boolean }> => {
   try {
     const { data, content: markdownContent } = parseFrontmatter(content);
-    const filename = filePath.split('/').pop() || '';
-    
-    // Ensure required fields have default values
+    const filename = filePath.split('/').pop() || '';    // Ensure required fields have default values
     const post = {
       id: data.id || getPostSlugFromFilename(filename),
       title: data.title || 'Untitled',
@@ -51,13 +49,15 @@ export const getPostFromFile = async (filePath: string, content: string): Promis
       content: markdownContent,
       author: data.author || 'Unknown Author',
       authorAvatar: data.authorAvatar,
+      authorRole: data.authorRole,
+      authorBio: data.authorBio,
       publishedAt: data.publishedAt || new Date().toISOString(),
       updatedAt: data.updatedAt,
       coverImage: data.coverImage || '',
-      thumbnail: data.thumbnail,
-      tags: data.tags || [],
+      thumbnail: data.thumbnail,      tags: data.tags || [],
       readingTime: data.readingTime || Math.ceil(markdownContent.split(/\s+/).length / 200),
       pinned: data.pinned === true || data.pinned === 'true',
+      hide: data.hide === true || data.hide === 'true',
     };
     
     return post;
@@ -73,10 +73,14 @@ export const getAllPosts = async (): Promise<(Post & { pinned?: boolean })[]> =>
     return getPostFromFile(filePath, content as string);
   });
   const fetchedPosts = await Promise.all(postPromises);
+  
+  // Filter out hidden posts
+  const visiblePosts = fetchedPosts.filter(post => !post.hide);
+  
   // Sort: pinned first, then by publishedAt
-  return fetchedPosts.sort((a, b) => {
+  return visiblePosts.sort((a, b) => {
     if (a.pinned && !b.pinned) return -1;
     if (!a.pinned && b.pinned) return 1;
     return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
   });
-}; 
+};

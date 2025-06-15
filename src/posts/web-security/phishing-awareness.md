@@ -3,10 +3,14 @@ title: "🎣 Don't Take the Bait: A Guide to Phishing Awareness"
 slug: "phishing-awareness"
 excerpt: "Phishing is one of the most common ways attackers breach our digital lives. Learn how to spot these scams and what to do to protect yourself."
 author: "Moroccan Cyber Security Community"
+authorAvatar: "/images/authors/community.jpeg"
+authorRole: "Cybersecurity Community"
+authorBio: "The Moroccan Cyber Security Community is a collective of cybersecurity professionals and enthusiasts dedicated to advancing security awareness, education, and collaboration across Morocco."
 publishedAt: "2024-06-03T12:00:00Z"
 coverImage: "https://images.unsplash.com/photo-1544328579-2c7b56a45633?auto=format&fit=crop&w=1200&q=80"
 tags: ["Phishing", "Cybersecurity", "Social Engineering", "Email Security", "Awareness"]
 readingTime: 5
+hide: true
 ---
 
 # 🎣 Don't Take the Bait: A Guide to Phishing Awareness

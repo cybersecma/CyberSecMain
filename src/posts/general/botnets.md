@@ -4,12 +4,17 @@ slug: "understanding-botnets-hidden-threat"
 excerpt: "Explore the world of botnets, how they operate, and how to protect yourself from these malicious networks."
 author: "El Hassan EL AMRI"
 authorAvatar: "/images/authors/el-hassan.jpg"
+authorRole: "Cybersecurity Engineer"
+authorBio: "Cybersecurity Engineer | Network & Security Engineer | NetDevSecOPS | SOC & VMS Analyst | Technical Trainer | Cyber Security Audit | YouTube Channel with 190+ Videos | Let's Secure Your Network! 🔒💻"
 publishedAt: "2025-06-15T10:00:00Z"
 coverImage: "/videos/botnet-on-computer-screen-and-hacking-background-2025-05-29-00-30-31-utc.mp4"
 thumbnail: "/videos/botnet-on-computer-screen-and-hacking-background-2025-05-29-00-30-31-utc.mp4"
 categories: ["General Security", "Malware"]
 tags: ["Botnets", "Malware", "Cybersecurity", "Network Security"]
 readingTime: 6
+pinned: true
+
+
 ---
 **Introduction**
 

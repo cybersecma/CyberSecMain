@@ -3,10 +3,14 @@ title: "🧠 Understanding Cross-Site Scripting (XSS)"
 slug: "introduction-to-xss"
 excerpt: "A deep dive into Cross-Site Scripting (XSS), one of the most persistent threats on the web. Learn the types, see the risks, and master the defenses."
 author: "Moroccan Cyber Security Community"
+authorAvatar: "/images/authors/community.jpeg"
+authorRole: "Cybersecurity Community"
+authorBio: "The Moroccan Cyber Security Community is a collective of cybersecurity professionals and enthusiasts dedicated to advancing security awareness, education, and collaboration across Morocco."
 publishedAt: "2024-03-14T10:00:00Z"
 coverImage: "https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 tags: ["XSS", "Cybersecurity", "Web Security", "JavaScript", "OWASP"]
 readingTime: 7
+hide: true
 ---
 
 # 🧠 Understanding Cross-Site Scripting (XSS)

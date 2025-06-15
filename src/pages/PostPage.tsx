@@ -256,8 +256,8 @@ const PostPage = () => {
               <AuthorBio
                 name={post.author}
                 avatar={post.authorAvatar}
-                role="Cybersecurity Expert"
-                description={`${post.author} is a cybersecurity professional sharing knowledge and expertise in the field.`}
+                role={post.authorRole}
+                description={post.authorBio}
               />
             </div>
           )}

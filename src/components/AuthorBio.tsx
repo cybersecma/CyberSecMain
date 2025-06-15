@@ -10,8 +10,6 @@ interface AuthorBioProps {
 const AuthorBio = ({ name, avatar, role, description }: AuthorBioProps) => {
   const [imageError, setImageError] = useState(false);
   const defaultAvatar = "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=100";
-  const defaultRole = "Cybersecurity Expert";
-  const defaultDescription = `${name} is a cybersecurity professional sharing knowledge and expertise in the field.`;
 
   const handleImageError = () => {
     setImageError(true);
@@ -27,7 +25,6 @@ const AuthorBio = ({ name, avatar, role, description }: AuthorBioProps) => {
     }
     return avatar;
   };
-
   return (
     <div className="mb-12 bg-gradient-to-br from-gray-900 to-black rounded-lg p-6 border border-gray-800 hover:border-red-500/30 transition-all duration-300">
       <div className="flex items-center mb-4">
@@ -41,12 +38,14 @@ const AuthorBio = ({ name, avatar, role, description }: AuthorBioProps) => {
         </div>
         <div>
           <h3 className="font-bold text-lg text-white">{name}</h3>
-          <p className="text-gray-400 text-sm">{role || defaultRole}</p>
+          {role && <p className="text-gray-400 text-sm">{role}</p>}
         </div>
       </div>
-      <p className="text-gray-300 text-sm leading-relaxed">
-        {description || defaultDescription}
-      </p>
+      {description && (
+        <p className="text-gray-300 text-sm leading-relaxed">
+          {description}
+        </p>
+      )}
     </div>
   );
 };

@@ -6,6 +6,8 @@ export interface Post {
   content?: string;
   author: string;
   authorAvatar?: string;
+  authorRole?: string;
+  authorBio?: string;
   publishedAt: string;
   updatedAt?: string;
   coverImage: string;
@@ -13,6 +15,7 @@ export interface Post {
   tags?: string[];
   readingTime: number;
   comments?: Comment[];
+  hide?: boolean;
 }
 
 export interface Comment {
