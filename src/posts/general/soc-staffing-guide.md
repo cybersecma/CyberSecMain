@@ -5,15 +5,15 @@ excerpt: "A comprehensive guide to determining the optimal number of SOC analyst
 author: "Ashraf Aboukass"
 authorAvatar: "/images/authors/ashraf.jpeg"
 authorRole: "Security Operations Expert"
-authorBio: "Security Operations Center expert with extensive experience in SOC design, implementation, and optimization. Specializes in helping organizations build effective security monitoring capabilities."
+authorBio: "CyberSecurity Leader | Speaker | Mentor."
 publishedAt: "2024-06-15T10:00:00Z"
-coverImage: "/videos/cryptography-compressed.mp4"
-thumbnail: "/videos/cryptography-compressed.mp4"
+coverImage: "/videos/simulation-compressed.mp4"
+thumbnail: "/videos/simulation-compressed.mp4"
 categories: ["SOC Operations", "Security Management"]
 tags: ["SOC", "Security Operations", "Staffing", "Budget Planning", "Team Management"]
 readingTime: 11
 pinned: false
-hide: true
+hide: false
 
 
 ---

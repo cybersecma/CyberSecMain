@@ -5,6 +5,7 @@ import { Post } from '../types';
 import { usePosts } from '../context/PostContext';
 import { formatDate } from '../utils/formatters';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -188,6 +189,7 @@ const PostPage = () => {
           {/* Post Content */}
             <div className="prose prose-invert prose-red [&_.highlight-red]:!text-[#FF3333] [&_span.highlight-red]:!text-[#FF3333] max-w-none mb-12 prose-lg">
             <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
               components={{
                   code: ({ className, children, ...props }: any) => {
