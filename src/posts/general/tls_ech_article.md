@@ -16,7 +16,7 @@ pinned: true
 
 ---
 
-# 🔐 TLS/SSL Advancements: The Privacy vs. Security Dilemma
+# TLS/SSL Advancements: The Privacy vs. Security Dilemma
 
 In today's cybersecurity landscape, we've seen big improvements in web encryption. From the broad adoption of TLS 1.3 to the evolution from Encrypted Server Name Indication (ESNI) to Encrypted Client Hello (ECH), plus the rollout of HTTP/3, these advancements have greatly strengthened online data protection. At the same time, they introduce challenges for network security monitoring and web filtering.
 
@@ -48,24 +48,9 @@ Key points:
 
 #### A Look Inside TLS 1.2 Packet Capture
 
-In TLS 1.2 exchanges, the **SNI** (Server Name Indication) is visible in cleartext, making it easy for network security devices to inspect and filter traffic based on the destination hostname.
+Below is an example of a typical TLS 1.2 exchange where the **SNI** is visible (in cleartext):
 
-**Example TLS 1.2 Handshake Fields:**
-```
-Client Hello:
-├── SNI: example.com (cleartext)
-├── Cipher Suites
-└── Extensions
-
-Server Hello:
-├── Certificate (CN visible)
-├── Server Key Exchange
-└── Server Hello Done
-```
-
-**TLS 1.2 SNI in Wireshark:**
-
-![TLS 1.2 SNI cleartext in Wireshark](/images/TLS1.2-SNI-cleartext-wireshark.png)
+![TLS 1.2 SNI in cleartext](/images/TLS1.2-SNI-cleartext-wireshark.png)
 
 ---
 
@@ -82,12 +67,6 @@ TLS 1.3 improves upon TLS 1.2 by encrypting data sooner and reducing round trips
 - **CN** generally gets protected faster in TLS 1.3.
 - **SNI** is still in cleartext without ESNI/ECH.
 
-**TLS 1.3 Key Improvements:**
-- **Reduced Latency**: Only one round trip needed
-- **Forward Secrecy**: Enhanced with ephemeral keys
-- **Stronger Encryption**: Removes weak cipher suites
-- **0-RTT Support**: Allows immediate data transmission
-
 ---
 
 ## ESNI, ECH, and DoH: Locking Down the Remaining Gaps
@@ -96,45 +75,17 @@ TLS 1.3 improves upon TLS 1.2 by encrypting data sooner and reducing round trips
 
 ESNI was an initial method to hide the SNI in the TLS 1.3 handshake. A special DNS record (`_esni`) let the client fetch a public key to encrypt the SNI before sending its ClientHello. However, ESNI didn't cover other fields (like ALPN), and compatibility issues arose. It's largely been replaced by ECH.
 
-**ESNI Limitations:**
-- Only encrypts SNI field
-- Doesn't protect ALPN or other extensions
-- Limited server support
-- Replaced by more comprehensive ECH
-
 ![TLS 1.3 with ESNI Extension](/images/TLS1.3-with-ESNI.png)
 
 ### DoH (DNS over HTTPS)
 
 Even if the SNI is encrypted, the domain might still be seen in DNS queries. DNS over HTTPS (DoH) fixes this by encrypting DNS requests---often enabled in modern browsers---making on-path domain snooping harder.
 
-**DoH Benefits:**
-- Encrypts DNS queries and responses
-- Prevents DNS-based tracking
-- Integrates with existing HTTPS infrastructure
-- Supported by major browsers
-
-**DoH Challenges for Security:**
-- Bypasses traditional DNS filtering
-- Complicates network monitoring
-- May use external DNS providers
-
 ### Encrypted Client Hello (ECH)
 
 ECH encrypts the entire ClientHello (including SNI, ALPN, and other fields), so it's a more complete privacy solution than ESNI. It uses a new HTTPS record type (65) to get the server's public key for encryption and typically works together with DoH.
 
-![ECH Implementation](/images/ECH-exchange.png)
-
-**ECH Architecture:**
-```
-Client → DNS Query for ECH Config → DNS Server
-Client ← ECH Configuration ← DNS Server
-
-Client → Outer ClientHello (fake SNI) → Server
-      → Inner ClientHello (real SNI, encrypted)
-
-Server → ServerHello (decrypted) → Client
-```
+![ECH Exchange](/images/ECH-exchange.png)
 
 Key points:
 
@@ -186,44 +137,3 @@ export SSLKEYLOGFILE=/path/to/sslkeys.txt
 - Traffic will be decrypted automatically
 
 **Note**: This approach works for both TLS 1.2 and TLS 1.3, though certain limitations may affect early data or other advanced features.
-
-### Testing ECH Implementation
-
-**Check ECH Support:**
-```bash
-# Test if a domain supports ECH
-curl -v --ech https://example.com
-
-# Check DNS records for ECH configuration
-dig HTTPS example.com
-```
-
----
-
-## Conclusion
-
-The evolution of TLS and related technologies represents a significant advancement in web privacy and security. While these improvements protect user data and communications, they also present new challenges for network security professionals.
-
-**Key Takeaways:**
-
-1. **TLS 1.3** provides better performance and security than TLS 1.2
-2. **ECH** offers comprehensive Client Hello encryption, replacing ESNI
-3. **DoH** encrypts DNS queries, preventing DNS-based monitoring
-4. **Security teams** must adapt strategies for encrypted environments
-5. **Balance** between privacy and security remains crucial
-
-As these technologies continue to evolve, organizations must stay informed and adapt their security architectures accordingly. The future of web security lies in finding innovative ways to maintain both strong privacy protections and effective threat detection capabilities.
-
----
-
-## References and Further Reading
-
-- [RFC 8446: The Transport Layer Security (TLS) Protocol Version 1.3](https://tools.ietf.org/html/rfc8446)
-- [Encrypted Client Hello Specification](https://datatracker.ietf.org/doc/draft-ietf-tls-esni/)
-- [DNS over HTTPS (DoH) RFC 8484](https://tools.ietf.org/html/rfc8484)
-- [QUIC Transport Protocol RFC 9000](https://tools.ietf.org/html/rfc9000)
-
-**Research Papers:**
-- "Encrypted Client Hello: Privacy and Security Analysis"
-- "The Impact of TLS 1.3 on Network Security Monitoring"
-- "Machine Learning Approaches for Encrypted Traffic Classification"
