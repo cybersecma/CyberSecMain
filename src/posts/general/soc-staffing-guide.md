@@ -7,8 +7,8 @@ authorAvatar: "/images/authors/ashraf.jpeg"
 authorRole: "Security Operations Expert"
 authorBio: "Security Operations Center expert with extensive experience in SOC design, implementation, and optimization. Specializes in helping organizations build effective security monitoring capabilities."
 publishedAt: "2024-06-15T10:00:00Z"
-coverImage: "/videos/cryptography-text-consisting-of-many-symbols-on-mo-2023-11-27-05-32-50-utc.mov"
-thumbnail: "/videos/cryptography-text-consisting-of-many-symbols-on-mo-2023-11-27-05-32-50-utc.mov"
+coverImage: "/videos/cryptography-compressed.mp4"
+thumbnail: "/videos/cryptography-compressed.mp4"
 categories: ["SOC Operations", "Security Management"]
 tags: ["SOC", "Security Operations", "Staffing", "Budget Planning", "Team Management"]
 readingTime: 11

@@ -7,8 +7,8 @@ authorAvatar: "/images/authors/abdo.jpeg"
 authorRole: "Senior Cloud Security Engineer"
 authorBio: "CyberSec Tiger Team @ Fortinet (CSE) [ cybersec / cloud / AI / ML], CCIE #40273, JNCIE #2360, CKA, CKS (K8S Sec) , NSE4/5/7, AWS Sec Architect | humbled & proud of our 10k+ top-notch community"
 publishedAt: "2024-02-26T10:00:00Z"
-coverImage: "/videos/cryptography-text-consisting-of-many-symbols-on-mo-2023-11-27-05-32-50-utc.mov"
-thumbnail: "/videos/cryptography-text-consisting-of-many-symbols-on-mo-2023-11-27-05-32-50-utc.mov"
+coverImage: "/videos/cryptography-compressed.mp4"
+thumbnail: "/videos/cryptography-compressed.mp4"
 categories: ["Network Security", "Encryption"]
 tags: ["TLS", "SSL", "ECH", "ESNI", "DoH", "Privacy", "Network Security", "Encryption"]
 readingTime: 12
