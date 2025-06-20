@@ -39,7 +39,7 @@ export const streams: Stream[] = [
     title: '5th CyberSec Hangout: Cyber governance & Security Consultant',
     description: 'Join CyberSec Morocco 4th Hangout with ssi Mouhcine STITI a Senior Cyber Security Consultant, with 17 years of experience in the field- He is also CISSP, CISA, ISO 27001 LI / LA, MS Cybersecurity & Azure Architect Expert',
     videoId: 'L9dZYoLYNfA',
-    date: '2025-06-21T16:00:00Z',
+    date: '2025-06-21T19:00:00Z',
     duration: '1.5 hours',
     host: 'Mouhcine STITI',
     tags: ['trends', 'threats', 'Security Consultant', 'cybersecurity', 'Cyber governance', 'security-trends'],
