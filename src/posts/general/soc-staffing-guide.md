@@ -22,23 +22,25 @@ hide: false
 
 Ever wondered how to accurately staff your Security Operations Center (SOC)? It's a complex puzzle, but this blog post breaks it down into actionable steps.
 
-Discover the *three primary foundations* that dictate your SOC's analyst count:
+Discover the <span class="highlight-red">**three primary foundations**</span> that dictate your SOC's analyst count:
 
-•⁠  ⁠*Budget Constraints:* Learn how your financial limits directly impact staffing levels and the crucial trade-offs you might face, like speed vs. quality of analysis or in-house vs. outsourced expertise.
-•⁠  ⁠*Required Operating Hours:* Understand how your organization's risk profile and coverage needs (from business hours to 24/7) shape your team size.
-•⁠  ⁠*Target SOC Maturity Level:* See how your desired level of security sophistication, from initial monitoring to an optimizing, highly automated SOC, influences staffing requirements.
+1.  ⁠*Budget Constraints:* Learn how your financial limits directly impact staffing levels and the crucial trade-offs you might face, like speed vs. quality of analysis or in-house vs. outsourced expertise.
+	
+2.  ⁠*Required Operating Hours:* Understand how your organization's risk profile and coverage needs (from business hours to 24/7) shape your team size.
+
+3.  ⁠*Target SOC Maturity Level:* See how your desired level of security sophistication, from initial monitoring to an optimizing, highly automated SOC, influences staffing requirements.
 
 Beyond these core elements, the article delves into *secondary factors* that further refine your staffing decisions, such as the volume of security alerts, desired alert response times, infrastructure complexity, and even the impact of AI.
 
 *Ready to make informed decisions about your SOC staffing? Read the full blog post to dive deeper into each factor and gain practical insights for planning or scaling your security operations team.*
 
-- [Original Full article by Ashraf ](https://www.aboukass.com/post/security-operations-center-soc-how-many-analysts-do-you-really-need)
+- [<span class="highlight-blue">Original Full article by Ashraf</span>](https://www.aboukass.com/post/security-operations-center-soc-how-many-analysts-do-you-really-need)
 
 ---
 
 ## References
 
-- [SOC-CMM (Security Operations Center Capability Maturity Model)](https://www.soc-cmm.com/)
-- [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework)
-- [SANS SOC Survey Reports](https://www.sans.org/reading-room/analysts-program/soc-survey)
-- [Industry Salary Benchmarks](https://www.cybersalaries.com/)
+- [<span class="highlight-blue">SOC-CMM (Security Operations Center Capability Maturity Model)</span>](https://www.soc-cmm.com/)
+- [<span class="highlight-blue">NIST Cybersecurity Framework</span>](https://www.nist.gov/cyberframework)
+- [<span class="highlight-blue">SANS SOC Survey Reports</span>](https://www.sans.org/reading-room/analysts-program/soc-survey)
+- [<span class="highlight-blue">Industry Salary Benchmarks</span>](https://www.cybersalaries.com/)
