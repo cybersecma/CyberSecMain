@@ -43,7 +43,7 @@ export const streams: Stream[] = [
     duration: '1.5 hours',
     host: 'Mouhcine STITI',
     tags: ['trends', 'threats', 'Security Consultant', 'cybersecurity', 'Cyber governance', 'security-trends'],
-    type: 'upcoming'
+    type: 'past'
   },
   
   
