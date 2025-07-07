@@ -7,8 +7,8 @@ authorAvatar: "/images/authors/ashraf.jpeg"
 authorRole: "Security Operations Expert"
 authorBio: "CyberSecurity Leader | Speaker | Mentor."
 publishedAt: "2025-07-04T12:00:00Z"
-coverImage: "/videos/simulation-compressed.mp4"
-thumbnail: "/videos/simulation-compressed.mp4"
+coverImage: "/videos/5028622-uhd_3840_2160_25fps.mp4"
+thumbnail: "/videos/5028622-uhd_3840_2160_25fps.mp4"
 categories: ["Business Security", "Practical Guides"]
 tags: ["small-business", "cybersecurity", "practical-guide", "business-protection", "security-basics"]
 readingTime: 8
