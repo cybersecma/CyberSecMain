@@ -61,7 +61,7 @@ export const streams: Stream[] = [
     title: 'ماتبقاش تستعمل إيميلك الحقيقي! - قناع الإيميل',
     description: 'Tired of spam and worried about your online privacy? Using one email for all your accounts exposes you to tracking and security risk. In this video, Ill show you the ultimate life hack: how to get unlimited, unique email addresses for free. Learn the step-by-step method to create a different email for every website, giving you total control over your digital life. Stop spam before it starts and keep your real inbox safe forever',
     videoId: '8PtV7AeHZEc',
-    date: '2025-06-21T18:00:00Z',
+    date: '2025-07-10T18:00:00Z',
     duration: '10 mins',
     host: 'Mouhcine STITI',
     tags: ['trends', 'threats', 'Security Consultant', 'cybersecurity', 'Cyber governance', 'security-trends'],
