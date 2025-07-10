@@ -45,6 +45,28 @@ export const streams: Stream[] = [
     tags: ['trends', 'threats', 'Security Consultant', 'cybersecurity', 'Cyber governance', 'security-trends'],
     type: 'past'
   },
+  {
+    id: '4',
+    title: 'كيفاش تحمي راسك او عائلتك في العالم الرقمي',
+    description: 'how to protect yourself and your family in digital world',
+    videoId: 'raD2Z9CvGYw',
+    date: '2025-07-05T18:00:00Z',
+    duration: '1.9 hours',
+    host: 'amine - anouar - saladin - mohamed amine rejmil',
+    tags: ['CyberSecurity', 'OnlineSafety', 'DigitalWellness', 'FamilyOnlineSafety', 'DataPrivacy', 'InternetSecurity', 'ParentalControls'],
+    type: 'past'
+  },
+  {
+    id: '5',
+    title: 'ماتبقاش تستعمل إيميلك الحقيقي! - قناع الإيميل',
+    description: 'Tired of spam and worried about your online privacy? Using one email for all your accounts exposes you to tracking and security risk. In this video, Ill show you the ultimate life hack: how to get unlimited, unique email addresses for free. Learn the step-by-step method to create a different email for every website, giving you total control over your digital life. Stop spam before it starts and keep your real inbox safe forever',
+    videoId: '8PtV7AeHZEc',
+    date: '2025-06-21T18:00:00Z',
+    duration: '10 mins',
+    host: 'Mouhcine STITI',
+    tags: ['trends', 'threats', 'Security Consultant', 'cybersecurity', 'Cyber governance', 'security-trends'],
+    type: 'past'
+  },
   
   
 ]; 
