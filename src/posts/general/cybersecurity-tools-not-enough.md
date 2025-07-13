@@ -24,9 +24,9 @@ Despite the surge of cybersecurity tools—from AI-driven solutions to all-in-on
 
 Cybersecurity isn’t just about technology. It’s about culture, risk ownership, and how quickly people and systems adapt. A resilient security posture requires understanding your organization at its core—not just plugging in the latest software.
 
----
 
-### Key takeaways:
+
+<span class="highlight-red">### Key takeaways</span>:
 
 - **Focus on critical data:** Protecting everything is unrealistic. Identify your true "crown jewels" and secure them intelligently, including upstream and downstream risks.
 
@@ -38,7 +38,9 @@ Cybersecurity isn’t just about technology. It’s about culture, risk ownershi
 
 - **Employees as intelligence sources:** Your team knows the weak points no tool can see. Empower them to speak up, and back them with action.
 
-Tools have their place—but real security comes from combining technology with human insight and collaboration. That’s the difference between reacting to threats and truly staying ahead of them.
+<span class="highlight-red">### Conclusion</span>:
+
+Tools have their place, but real security comes from combining technology with human insight and collaboration. That’s the difference between reacting to threats and truly staying ahead of them.
 
 
 - [<span class="highlight-blue">Original Full article by Ashraf</span>](https://www.aboukass.com/post/we-can-t-buy-ourselves-out-of-this-problem-cyber-security-tools-are-not-enough)
