@@ -19,9 +19,9 @@ hide: false
 ---
 
 
-Despite the surge of cybersecurity tools—from AI-driven solutions to all-in-one platforms—organizations still fall victim to major cyber attacks. Even the most tool-rich FTSE 100 companies haven’t been spared. Why? Because tools alone won’t save us.
+Despite the surge of cybersecurity tools -from AI-driven solutions to all-in-one platforms- organizations still fall victim to major cyber attacks. Even the most tool-rich FTSE 100 companies haven’t been spared. Why? Because tools alone won’t save us.
 
-Cybersecurity isn’t just about technology. It’s about culture, risk ownership, and how quickly people and systems adapt. A resilient security posture requires understanding your organization at its core—not just plugging in the latest software.
+Cybersecurity isn’t just about technology. It’s about culture, risk ownership, and how quickly people and systems adapt. A resilient security posture requires understanding your organization at its core, not just plugging in the latest software.
 
 
 
