@@ -18,7 +18,6 @@ hide: false
 
 ---
 
-## We can’t buy ourselves out of this problem: Cybersecurity tools are not enough
 
 Despite the surge of cybersecurity tools—from AI-driven solutions to all-in-one platforms—organizations still fall victim to major cyber attacks. Even the most tool-rich FTSE 100 companies haven’t been spared. Why? Because tools alone won’t save us.
 
@@ -26,7 +25,7 @@ Cybersecurity isn’t just about technology. It’s about culture, risk ownershi
 
 
 
-<span class="highlight-red">### Key takeaways</span>:
+###<span class="highlight-red"> Key takeaways</span>:
 
 - **Focus on critical data:** Protecting everything is unrealistic. Identify your true "crown jewels" and secure them intelligently, including upstream and downstream risks.
 
@@ -38,7 +37,7 @@ Cybersecurity isn’t just about technology. It’s about culture, risk ownershi
 
 - **Employees as intelligence sources:** Your team knows the weak points no tool can see. Empower them to speak up, and back them with action.
 
-<span class="highlight-red">### Conclusion</span>:
+###<span class="highlight-red"> Conclusion</span>:
 
 Tools have their place, but real security comes from combining technology with human insight and collaboration. That’s the difference between reacting to threats and truly staying ahead of them.
 
