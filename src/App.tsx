@@ -17,6 +17,7 @@ import ArticlesPage from './pages/ArticlesPage';
 import NotFound from './pages/NotFound';
 import { PostProvider } from './context/PostContext';
 import StreamsPage from './pages/StreamsPage';
+import BreachesPage from "./pages/BreachesPage";
 
 // Changed from createBrowserRouter to createHashRouter
 const router = createHashRouter(
@@ -30,6 +31,7 @@ const router = createHashRouter(
       <Route path="community" element={<CommunityPage />} />
       <Route path="search" element={<SearchPage />} />
       <Route path="*" element={<NotFound />} />
+      <Route path="breaches" element={<BreachesPage />} />
     </Route>
   )
 );
