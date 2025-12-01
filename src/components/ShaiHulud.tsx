@@ -42,12 +42,6 @@ const ShaiHulud = () => {
       // Also check for @ version for company names if user didn't type it
       const hashWithAt = normalized.startsWith('@') ? hash : await hashString('@' + normalized);
 
-      console.log('--- Debug Info ---');
-      console.log('Input:', input);
-      console.log('Normalized:', normalized);
-      console.log('Hash (SHA-256):', hash);
-      console.log('Checking Firestore collection: pawned_hashes');
-
       // Use direct document lookup by ID instead of query
       // This is more efficient and less prone to index issues since we store the hash as the ID
       const docRef = doc(db, 'pawned_hashes', hash);
