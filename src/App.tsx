@@ -28,7 +28,6 @@ const router = createHashRouter(
       <Route path="post/:slug" element={<PostPage />} />
       <Route path="articles" element={<ArticlesPage />} />
       <Route path="streams" element={<StreamsPage />} />
-      <Route path="about" element={<AboutPage />} />
       <Route path="community" element={<CommunityPage />} />
       <Route path="search" element={<SearchPage />} />
       <Route path="*" element={<NotFound />} />

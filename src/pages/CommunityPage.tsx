@@ -1,159 +1,135 @@
-// Import icons from Lucide and React Icons libraries
-import { Users, Calendar, MessageSquare, Award, ChevronRight, Linkedin, Shield, Target, BookOpen } from 'lucide-react';
-import { FaDiscord, FaWhatsapp } from 'react-icons/fa';
-
-// Sample events data
-const events = [
-  //{
-    //title: "Hangout: Databreaches in Morocco",
-    //date: "9pm Morocco time, June 05, 2025", 
-    //description: "Learn about modern web security practices"
-  //},
-  
-  
-  // Add more events as needed
-];
+import { Users, Shield, Target, Heart, CheckCircle, Linkedin, MessageSquareText, Bot } from 'lucide-react';
 
 const CommunityPage = () => {
   return (
     <div className="min-h-screen bg-black pt-24 pb-16">
       <div className="container mx-auto px-4">
         {/* Hero Section */}
-        <section className="max-w-3xl mx-auto text-center mb-20">
+        <section className="max-w-4xl mx-auto text-center mb-20">
           <div className="flex justify-center mb-4">
             <div className="inline-flex items-center px-4 py-2 rounded-md bg-red-500/10 border border-red-500/30 hover:bg-red-500/20 transition-all duration-300 transform hover:scale-105">
-              <Shield className="h-5 w-5 text-red-500 mr-2 animate-pulse" />
-              <span className="text-sm font-medium text-red-500">Join Our Community</span>
+              <Users className="h-5 w-5 text-red-500 mr-2 animate-pulse" />
+              <span className="text-sm font-medium text-red-500">Moroccan Cybersecurity Community</span>
             </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white animate-fade-in" style={{ animationDuration: '1s', animationFillMode: 'both' }}>
-            Connect with Morocco's Security Experts
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white animate-fade-in leading-tight">
+            Building a Safer Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-purple-600">Morocco</span>
           </h1>
-          <p className="text-xl text-gray-400 leading-relaxed animate-fade-in max-w-2xl mx-auto mb-8" style={{ animationDuration: '1s', animationDelay: '0.2s', animationFillMode: 'both' }}>
-            Join a thriving community of 500+ cybersecurity professionals. Share knowledge, collaborate on projects, and advance your career.
+          <p className="text-xl text-gray-400 leading-relaxed animate-fade-in max-w-2xl mx-auto mb-10">
+            Join a non-profit ecosystem of researchers, professionals, and enthusiasts dedicated to elevating Morocco's national security posture.
           </p>
           
-          {/* Social Links */}
-          <div className="flex items-center justify-center space-x-6">
+          {/* Social Links - Modern Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
             <a
-              href="https://lnkd.in/dJqfZ3bE"
+              href="https://discord.com/invite/GhX2KzNqRZ"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-8 py-3 bg-red-500 text-white text-lg font-medium rounded-md hover:bg-purple-600 transition-all duration-200 hover:shadow-lg hover:shadow-purple-500/20"
+              className="group flex items-center justify-center p-4 bg-[#5865F2]/10 border border-[#5865F2]/30 rounded-xl hover:bg-[#5865F2]/20 transition-all duration-300"
             >
-              Join Discord
-              <ChevronRight className="ml-2 h-5 w-5" />
+              <Bot className="w-6 h-6 text-[#5865F2] mr-3 group-hover:scale-110 transition-transform" />
+              <span className="font-medium text-[#5865F2]">Discord Server</span>
             </a>
-            <div className="flex items-center space-x-4">
-              <a 
-                href="https://lnkd.in/dN4tDExq" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#25D366] transition-colors duration-300"
-              >
-                <FaWhatsapp className="w-6 h-6" />
-                <span className="sr-only">Join us on WhatsApp</span>
-              </a>
-              <a 
-                href="https://lnkd.in/dhUV2euP" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-500 transition-colors duration-300"
-              >
-                <Linkedin className="w-6 h-6" />
-                <span className="sr-only">Follow us on LinkedIn</span>
-              </a>
-            </div>
+            <a 
+              href="https://www.linkedin.com/groups/10081631/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group flex items-center justify-center p-4 bg-[#0077b5]/10 border border-[#0077b5]/30 rounded-xl hover:bg-[#0077b5]/20 transition-all duration-300"
+            >
+              <Linkedin className="w-6 h-6 text-[#0077b5] mr-3 group-hover:scale-110 transition-transform" />
+              <span className="font-medium text-[#0077b5]">LinkedIn Group</span>
+            </a>
+            <a 
+              href="https://chat.whatsapp.com/EXp857CsQSdL5m2ZauHKgh" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="group flex items-center justify-center p-4 bg-[#25D366]/10 border border-[#25D366]/30 rounded-xl hover:bg-[#25D366]/20 transition-all duration-300"
+            >
+              <MessageSquareText className="w-6 h-6 text-[#25D366] mr-3 group-hover:scale-110 transition-transform" />
+              <span className="font-medium text-[#25D366]">WhatsApp Community</span>
+            </a>
           </div>
         </section>
 
-        {/* Events Section */}
+        {/* Non-Lucrative Mission Section */}
         <section className="mb-20">
-          <div className="bg-black-800/50 p-6 rounded-lg border border-gray-700 hover:border-red-500">
-            <div className="justify-center">
-              <div className="flex items-center justify-center mb-4">
-                <div className="p-2 bg-black-900 rounded-md mr-4 transition-colors duration-300 group-hover:bg-red-500/10">
-                  <Calendar className="h-12 w-12 text-cyber-red-500 mb-4" />
+          <div className="relative bg-gray-900/30 border border-gray-800 rounded-2xl p-8 md:p-12 overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/5 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            
+            <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <div className="flex items-center space-x-3 mb-6">
+                  <Heart className="h-6 w-6 text-red-500" />
+                  <h2 className="text-3xl font-bold text-white">Our Mission & Commitment</h2>
                 </div>
-                <h3 className="text-xl font-semibold text-white group-hover:text-red-500 transition-colors duration-300">
-                  <p className="text-xl font-bold mb-3">Upcoming Events</p>
-                </h3>
+                <div className="space-y-6 text-gray-300 leading-relaxed">
+                  <p>
+                    CyberSec.ma is strictly a <span className="text-white font-semibold">non-lucrative initiative</span>. Our target is not financial gain, but national impact. We are driven by a singular purpose: to improve the cybersecurity level in Morocco.
+                  </p>
+                  <p>
+                    We exist to bridge the gap between academic theory and practical reality. Through collaborative research, timely threat alerts, and open knowledge sharing, we aim to build a resilient digital defense for our country.
+                  </p>
+                  <p>
+                    Every resource, tool, and guide we provide is free and open-source, contributed by volunteers who believe in securing our collective future.
+                  </p>
+                </div>
               </div>
               
-              {/* Events Grid Container */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {/* Conditional rendering based on events */}
-                {events.length > 0 ? (
-                  events.map((event, index) => (
-                    <div key={index} className="border-l-2 border-cyber-red-500 pl-4 hover:bg-gray-900/50 p-2 rounded transition-colors duration-200">
-                      <h3 className="font-semibold">{event.title}</h3>
-                      <p className="text-sm text-gray-400">{event.date}</p>
-                      {event.description && (
-                        <p className="text-sm text-gray-500 mt-1">{event.description}</p>
-                      )}
+              <div className="grid gap-4">
+                {[
+                  { title: "Research & Development", desc: "Conducting and publishing studies on local threat landscapes." },
+                  { title: "Public Awareness", desc: "Demystifying security for businesses and citizens." },
+                  { title: "Talent Growth", desc: "Mentoring the next generation of Moroccan ethical hackers." },
+                  { title: "Threat Intelligence", desc: "Rapid dissemination of critical vulnerability alerts." }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start p-4 bg-black/50 rounded-lg border border-gray-800">
+                    <CheckCircle className="h-5 w-5 text-green-500 mt-1 mr-3 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-white">{item.title}</h3>
+                      <p className="text-sm text-gray-400">{item.desc}</p>
                     </div>
-                  ))
-                ) : (
-                  <div className="col-span-full text-center py-6">
-                    <p className="text-gray-500 italic">No upcoming events scheduled. Check back later!</p>
                   </div>
-                )}
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* Community Benefits Section */}
-        <div className="grid md:grid-cols-1 gap-6 mb-20">
-          {[
-            {
-              icon: <Shield className="h-8 w-8 text-red-500 transform transition-transform group-hover:rotate-12" />,
-              title: "Community Benefits",
-              description: "• Access to exclusive cybersecurity resources\n• Networking with industry professionals\n• Participation in workshops and events\n• Knowledge sharing and collaboration\n• Career development opportunities\n"
-            },
-          ].map((item, index) => (
-            <div key={index} 
-              className="group bg-black p-6 rounded-md border border-gray-800 hover:border-red-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/10 transform hover:-translate-y-1">
-              <div className="flex items-center justify-center mb-4">
-                <div className="p-2 bg-gray-900 rounded-md mr-4 transition-colors duration-300 group-hover:bg-red-500/10">
+        {/* Core Values Grid */}
+        <section className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">Community Guidelines</h2>
+            <p className="text-gray-400">How we operate and collaborate</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: <Shield className="h-8 w-8 text-blue-500" />,
+                title: "Ethical Conduct",
+                desc: "We use our skills solely for defense and authorized testing. Illegal activities are strictly prohibited."
+              },
+              {
+                icon: <Users className="h-8 w-8 text-purple-500" />,
+                title: "Open Collaboration",
+                desc: "Knowledge grows when shared. We encourage mentorship and constructive feedback."
+              },
+              {
+                icon: <Target className="h-8 w-8 text-red-500" />,
+                title: "National Impact",
+                desc: "Our primary focus is the safety and resilience of Moroccan digital infrastructure."
+              }
+            ].map((item, index) => (
+              <div key={index} className="bg-black p-6 rounded-xl border border-gray-800 hover:border-gray-700 transition-colors text-center">
+                <div className="inline-flex p-3 rounded-lg bg-gray-900 mb-4">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-white group-hover:text-red-500 transition-colors duration-300">{item.title}</h3>
+                <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                <p className="text-gray-400 text-sm">{item.desc}</p>
               </div>
-              <div className="text-gray-400 text-center group-hover:text-gray-300 transition-colors duration-300">
-                {item.description.split('\n').map((line, i) => (
-                  <p key={i}>{line}</p>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Community Guidelines Section */}
-        <div className="grid md:grid-cols-1 gap-6 mb-20">
-          {[
-            {
-              icon: <Shield className="h-8 w-8 text-red-500 transform transition-transform group-hover:rotate-12" />,
-              title: "Community guidelines",
-              description: "Respect all community members and their opinions\nShare knowledge and experiences constructively\nMaintain professional conduct in all interactions\nFollow ethical guidelines in cybersecurity discussions\nContribute positively to the community's growth"
-            },
-          ].map((item, index) => (
-            <div key={index} 
-              className="group bg-black p-6 rounded-md border border-gray-800 hover:border-red-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/10 transform hover:-translate-y-1">
-              <div className="flex items-center justify-center mb-4">
-                <div className="p-2 bg-gray-900 rounded-md mr-4 transition-colors duration-300 group-hover:bg-red-500/10">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-white group-hover:text-red-500 transition-colors duration-300">{item.title}</h3>
-              </div>
-              <div className="text-gray-400 text-center group-hover:text-gray-300 transition-colors duration-300">
-                {item.description.split('\n').map((line, i) => (
-                  <p key={i}>{line}</p>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );

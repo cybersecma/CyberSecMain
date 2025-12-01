@@ -70,22 +70,14 @@ const Navbar = () => {
               >
               Streams
             </Link>
-            <Link 
-              to="/about" 
-              className={`text-sm font-medium transition-colors ${
-                isActive('/about') ? 'text-cyber-red-500' : 'text-gray-300 hover:text-white'
-              }`}
-            >
-              About Us
-            </Link>
-            <Link 
-              to="/community" 
-              className={`text-sm font-medium transition-colors ${
-                isActive('/community') ? 'text-cyber-red-500' : 'text-gray-300 hover:text-white'
-              }`}
-            >
-              Community
-            </Link>
+              <Link 
+                to="/community" 
+                className={`text-sm font-medium transition-colors ${
+                  isActive('/community') ? 'text-cyber-red-500' : 'text-gray-300 hover:text-white'
+                }`}
+              >
+                About Us
+              </Link>
             </div>
             <div className={`transition-all duration-300 ease-in-out ${
               isSearchOpen ? 'w-[600px] opacity-100' : 'w-0 opacity-0'
@@ -175,22 +167,13 @@ const Navbar = () => {
                 Streams
               </Link>
               <Link 
-                to="/about" 
-                className={`text-sm font-medium transition-colors ${
-                  isActive('/about') ? 'text-cyber-red-500' : 'text-gray-300 hover:text-white'
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About Us
-              </Link>
-              <Link 
                 to="/community" 
                 className={`text-sm font-medium transition-colors ${
                   isActive('/community') ? 'text-cyber-red-500' : 'text-gray-300 hover:text-white'
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Community
+                About Us
               </Link>
             </div>
           </div>
