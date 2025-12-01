@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Shield, Video, BookOpen } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
 import { usePosts } from '../context/PostContext';
 import PostList from '../components/PostList';
@@ -16,11 +17,20 @@ const Home = () => {
   // Get the top 3 posts (pinned first)
   const featuredPosts = posts.slice(0, 3);
 
-  // Get the latest 2 past streams
+  // Get the specific featured streams
+  const featuredVideoIds = ['ZwcZbqi9ZE8', '5rgn8-6Qe9w'];
   const latestPastStreams = streams
-    .filter(stream => stream.type === 'past')
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 2);
+    .filter(stream => featuredVideoIds.includes(stream.videoId))
+    .sort((a, b) => featuredVideoIds.indexOf(a.videoId) - featuredVideoIds.indexOf(b.videoId));
+
+  // Fallback to latest if specific ones aren't found
+  if (latestPastStreams.length === 0) {
+    const fallbackStreams = streams
+      .filter(stream => stream.type === 'past')
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .slice(0, 2);
+    latestPastStreams.push(...fallbackStreams);
+  }
 
   if (loading) {
     return (
@@ -84,6 +94,16 @@ const Home = () => {
               </div>
             ))}
           </div>
+
+          <div className="mt-12 text-center">
+             <Link 
+               to="/streams" 
+               className="inline-flex items-center px-8 py-3 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300 rounded-md text-lg font-semibold group"
+             >
+               See More Streams
+               <Video className="ml-2 h-5 w-5 group-hover:animate-pulse" />
+             </Link>
+          </div>
         </div>
       </section>
 
@@ -92,18 +112,21 @@ const Home = () => {
         <section className="py-20 bg-black">
           <div className="container mx-auto px-4">
             <div className="text-center">
-              <div className="flex justify-center">
-                <div className="inline-flex items-center px-4 py-2 rounded-md bg-red-500/10 border border-red-500/30 hover:bg-red-500/20 transition-all duration-300 transform hover:scale-105">
-                  <BookOpen className="h-5 w-5 text-red-500 mr-2 animate-pulse" />
-                  <span className="text-sm font-medium text-red-500">Featured Content</span>
-                </div>
-              </div>
               <h2 className="text-3xl md:text-4 font-bold mt-4 text-white">Featured Articles</h2>
               <p className="text-xl text-gray-400 leading-relaxed max-w-2xl mx-auto mt-2 mb-4">
                 Hand-picked articles from our team, covering the latest in cybersecurity.
               </p>
             </div>
             <PostList posts={featuredPosts} />
+            <div className="mt-12 text-center">
+               <Link 
+                 to="/articles" 
+                 className="inline-flex items-center px-8 py-3 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300 rounded-md text-lg font-semibold group"
+               >
+                 See More Articles
+                 <BookOpen className="ml-2 h-5 w-5 group-hover:animate-pulse" />
+               </Link>
+            </div>
           </div>
         </section>
       )}
