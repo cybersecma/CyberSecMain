@@ -18,9 +18,9 @@ const CommunityPage = () => {
           <p className="text-xl text-gray-400 leading-relaxed animate-fade-in max-w-2xl mx-auto mb-10">
             Join a non-profit ecosystem of researchers, professionals, and enthusiasts dedicated to elevating Morocco's national security posture.
           </p>
-          
+
           {/* Social Links - Modern Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto mb-20">
             <a
               href="https://discord.com/invite/GhX2KzNqRZ"
               target="_blank"
@@ -48,6 +48,24 @@ const CommunityPage = () => {
               <MessageSquareText className="w-6 h-6 text-[#25D366] mr-3 group-hover:scale-110 transition-transform" />
               <span className="font-medium text-[#25D366]">WhatsApp Community</span>
             </a>
+          </div>
+
+          {/* Where to find us */}
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-white mb-2">Where to find us?</h2>
+            <p className="text-gray-400">Our community structure across different platforms</p>
+          </div>
+
+          {/* Community Diagram Image */}
+          <div className="mb-12 flex justify-center animate-fade-in">
+            <div className="relative group w-full max-w-5xl">
+              <div className="absolute -inset-1 bg-gradient-to-r from-red-500 to-purple-600 rounded-2xl opacity-30 group-hover:opacity-50 transition duration-500 blur-lg"></div>
+              <img 
+                src="/images/community.png" 
+                alt="CyberSec.ma Community Structure" 
+                className="relative rounded-xl shadow-2xl border border-gray-800 w-full h-auto transform transition duration-500 hover:scale-[1.01]"
+              />
+            </div>
           </div>
         </section>
 
