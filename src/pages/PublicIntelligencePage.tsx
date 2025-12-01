@@ -1,5 +1,7 @@
 import { Shield, Database, Lock, Building2, MessageSquareText, Linkedin } from 'lucide-react';
 import ShaiHulud from '../components/ShaiHulud';
+import NewsletterSignup from '../components/NewsletterSignup';
+// import DebugNewsletter from '../components/DebugNewsletter'; // Uncomment to debug
 
 const PublicIntelligencePage = () => {
   return (
@@ -55,6 +57,9 @@ const PublicIntelligencePage = () => {
               </div>
             </div>
           </div>
+          
+          {/* Newsletter Section */}
+          <NewsletterSignup />
           
           {/* Company Contact Section */}
           <div className="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 md:p-10 backdrop-blur-sm">

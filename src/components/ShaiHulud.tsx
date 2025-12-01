@@ -6,6 +6,7 @@ import { db } from '../utils/firebase';
 const ShaiHulud = () => {
   const [input, setInput] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'safe' | 'pawned' | 'error'>('idle');
+  const [resultInput, setResultInput] = useState(''); // Store the input that was actually checked
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const normalizeInput = (text: string): string => {
@@ -34,6 +35,7 @@ const ShaiHulud = () => {
     if (!input) return;
 
     setStatus('loading');
+    setResultInput(input); // Capture current input as the one being checked
     setErrorMsg(null);
     
     try {
@@ -97,7 +99,12 @@ const ShaiHulud = () => {
             <input
               type="text"
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => {
+                setInput(e.target.value);
+                if (status !== 'idle' && status !== 'loading') {
+                  setStatus('idle'); // Reset status when user starts typing new query
+                }
+              }}
               placeholder="e.g., username"
               className="block w-full pl-12 pr-4 py-4 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all text-lg"
             />
@@ -124,7 +131,7 @@ const ShaiHulud = () => {
             <div>
               <h3 className="text-xl font-bold text-red-500 mb-2">User COMPROMISED!!</h3>
               <p className="text-gray-300">
-                The developer <span className="font-mono text-white bg-red-500/20 px-2 py-0.5 rounded">{input}</span> has bee COMPROMISED by Shai Hulud (v1/2) !! Your systems/data might be leaked or compromied.
+                The developer <span className="font-mono text-white bg-red-500/20 px-2 py-0.5 rounded">{resultInput}</span> has bee COMPROMISED by Shai Hulud (v1/2) !! Your systems/data might be leaked or compromied.
               </p>
             </div>
           </div>
@@ -137,7 +144,7 @@ const ShaiHulud = () => {
                 <div>
                 <h3 className="text-xl font-bold text-green-500 mb-2">NO MATCH FOUND</h3>
                 <p className="text-gray-300">
-                    The identifier <span className="font-mono text-white bg-green-500/20 px-2 py-0.5 rounded">{input}</span> does not appear in our current records.
+                    The identifier <span className="font-mono text-white bg-green-500/20 px-2 py-0.5 rounded">{resultInput}</span> does not appear in our current records.
                 </p>
                 </div>
             </div>
