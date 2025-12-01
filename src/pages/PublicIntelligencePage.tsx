@@ -1,4 +1,4 @@
-import { Shield, Database, Lock } from 'lucide-react';
+import { Shield, Database, Lock, Building2, MessageSquareText, Linkedin } from 'lucide-react';
 import ShaiHulud from '../components/ShaiHulud';
 
 const PublicIntelligencePage = () => {
@@ -18,7 +18,7 @@ const PublicIntelligencePage = () => {
           </h1>
           <p className="text-xl text-gray-400 leading-relaxed">
             Access our public database of compromised accounts and security incidents. 
-            Check if your organization or personal accounts have been exposed.
+            Check if your personal accounts have been exposed.
           </p>
         </div>
 
@@ -35,7 +35,7 @@ const PublicIntelligencePage = () => {
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-white">Shai Hulud 2.0</h2>
-                    <p className="text-gray-500">GitHub & Organization Leak Checker</p>
+                    <p className="text-gray-500">GitHub Shai Hulud Checker</p>
                   </div>
                 </div>
                 <div className="hidden md:flex items-center text-xs text-gray-500 font-mono border border-gray-800 rounded-md px-3 py-1">
@@ -49,9 +49,44 @@ const PublicIntelligencePage = () => {
               <div className="mt-8 pt-8 border-t border-gray-800 text-sm text-gray-500 flex items-center justify-between">
                 <div className="flex items-center">
                   <Lock className="h-4 w-4 mr-2" />
-                  <span>Secure Client-Side Hashing</span>
+                  <span>Secure checking</span>
                 </div>
-                <p>Your queries never leave your browser</p>
+                <p></p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Company Contact Section */}
+          <div className="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 md:p-10 backdrop-blur-sm">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="flex-1">
+                <div className="flex items-center space-x-3 mb-4">
+                  <Building2 className="h-6 w-6 text-blue-500" />
+                  <h3 className="text-xl font-bold text-white">For Organizations & Companies</h3>
+                </div>
+                <p className="text-gray-400 mb-6">
+                  Are you a company representative? If you suspect your organization's members might be affected by a breach or want to verify the security status of your team, please contact us directly for a confidential assessment.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a 
+                  href="https://www.linkedin.com/groups/10081631/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[#0077b5]/10 border border-[#0077b5]/30 text-[#0077b5] hover:bg-[#0077b5]/20 transition-all duration-300 font-medium"
+                >
+                  <Linkedin className="mr-2 h-5 w-5" />
+                  Contact via LinkedIn
+                </a>
+                <a 
+                  href="https://chat.whatsapp.com/EXp857CsQSdL5m2ZauHKgh" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] hover:bg-[#25D366]/20 transition-all duration-300 font-medium"
+                >
+                  <MessageSquareText className="mr-2 h-5 w-5" />
+                  Contact via WhatsApp
+                </a>
               </div>
             </div>
           </div>
@@ -62,4 +97,3 @@ const PublicIntelligencePage = () => {
 };
 
 export default PublicIntelligencePage;
-
