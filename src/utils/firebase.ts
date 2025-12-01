@@ -11,5 +11,26 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
+// Debugging configuration (Safe - masking secrets)
+const checkConfig = () => {
+  const missingKeys = Object.entries(firebaseConfig)
+    .filter(([key, value]) => !value)
+    .map(([key]) => key);
+
+  if (missingKeys.length > 0) {
+    console.error(
+      "[Firebase Config Error] The following environment variables are missing or empty:", 
+      missingKeys.join(", ")
+    );
+    console.warn(
+      "Ensure you have a .env file in your project root with valid VITE_FIREBASE_* keys."
+    );
+  } else {
+    console.log("[Firebase Config] Successfully loaded configuration for project:", firebaseConfig.projectId);
+  }
+};
+
+checkConfig();
+
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);

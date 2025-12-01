@@ -46,20 +46,28 @@ const Navbar = () => {
             >
               Home
             </Link>
-            <Link 
-              to="/articles" 
-              className={`text-sm font-medium transition-colors ${
-                isActive('/articles') ? 'text-cyber-red-500' : 'text-gray-300 hover:text-white'
-              }`}
-            >
-              Articles
-            </Link>
-            <Link 
-              to="/streams" 
-              className={`text-sm font-medium transition-colors ${
-                isActive('/streams') ? 'text-cyber-red-500' : 'text-gray-300 hover:text-white'
-              }`}
-            >
+              <Link 
+                to="/articles" 
+                className={`text-sm font-medium transition-colors ${
+                  isActive('/articles') ? 'text-cyber-red-500' : 'text-gray-300 hover:text-white'
+                }`}
+              >
+                Articles
+              </Link>
+              <Link 
+                to="/public-intelligence" 
+                className={`text-sm font-medium transition-colors ${
+                  isActive('/public-intelligence') ? 'text-cyber-red-500' : 'text-gray-300 hover:text-white'
+                }`}
+              >
+                Intelligence
+              </Link>
+              <Link 
+                to="/streams" 
+                className={`text-sm font-medium transition-colors ${
+                  isActive('/streams') ? 'text-cyber-red-500' : 'text-gray-300 hover:text-white'
+                }`}
+              >
               Streams
             </Link>
             <Link 
@@ -147,6 +155,15 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Articles
+              </Link>
+              <Link 
+                to="/public-intelligence" 
+                className={`text-sm font-medium transition-colors ${
+                  isActive('/public-intelligence') ? 'text-cyber-red-500' : 'text-gray-300 hover:text-white'
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Intelligence
               </Link>
               <Link 
                 to="/streams" 

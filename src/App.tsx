@@ -18,6 +18,7 @@ import NotFound from './pages/NotFound';
 import { PostProvider } from './context/PostContext';
 import StreamsPage from './pages/StreamsPage';
 import BreachesPage from "./pages/BreachesPage";
+import PublicIntelligencePage from './pages/PublicIntelligencePage';
 
 // Changed from createBrowserRouter to createHashRouter
 const router = createHashRouter(
@@ -32,6 +33,7 @@ const router = createHashRouter(
       <Route path="search" element={<SearchPage />} />
       <Route path="*" element={<NotFound />} />
       <Route path="breaches" element={<BreachesPage />} />
+      <Route path="public-intelligence" element={<PublicIntelligencePage />} />
     </Route>
   )
 );
