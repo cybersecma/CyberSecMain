@@ -10,17 +10,23 @@ readingTime: 5
 pinned: true
 ---
 
-JS and NPM are used by large scale of developers world wide, and especially in Morocco. The software supply chain is no longer just a vector for opportunistic theft; it is a domain of active, automated warfare. Late November 2025 marked the arrival of **Shai-Hulud 2.0** (or "Sha1-Hulud: The Second Coming"), a sophisticated NPM worm that has already compromised foundational packages used by major platforms like Zapier, Postman, and PostHog.
+JS and NPM are used by large scale of developers world wide, and especially in Morocco. The software supply chain is no longer just a vector for opportunistic theft; it is a domain of active, automated warfare. Late November 2025 we noticed the arrival of **Shai-Hulud 2.0** (or "Sha1-Hulud: The Second Coming"), a sophisticated NPM worm that compromised foundational packages used by major platforms like Zapier, Postman, and PostHog.
 
-At **Cybersec.ma**, we didn't just read the reports, make a stream, and talk about it. We also analyzed the whole kill chain in our labs, reproduced it, and executed an OSINT investigation to figure out the impact on compromised companies and GitHub users. We have published this data as part of our **community free intelligence services** on our website.
+At **Cybersec.ma**, we didn't just read the reports, made a stream, and talk about it. We also analyzed the whole kill chain in our labs, reproduced it, and particularily focused on executing an OSINT investigation to figure out the impact on compromised companies and GitHub users. We have published this data as part of our **community free intelligence services**  <span style="color: blue;"> https://cybersec.ma/#/public-intelligence</span> on our website, <span style="color: orange;">**we believe this is our unique and exclusive 'value added' comparing to any other security reports.** </span>
 
 ## The "Shai-Hulud" Mechanism: Why It’s Different
 
-Unlike previous attacks that relied on manual updates, Shai-Hulud 2.0 is a self-propagating worm. It utilizes a `preinstall` hook to execute malicious code before a package is even fully installed, creating a race condition against security scanners.
+Unlike previous attacks, in our opinion, Shai Hulud 2.0 has a lot of fascinating ideas :
++ Along the self-propagating, it keep expanding its C2 control and solidifying it 
++ The use of github repos as C2, but not just a traditional adversary repos, it makes everyvictim repo as C2
++ The obfuscation of the payload is very heavy, with lot of techniques to evade EDR/FWs/Scanning/SIEM..
++ The use of a fairly unkown runtime Bun , instead of JS, by using `preinstall` hook to execute malicious code before a package is even fully installed, creating a race condition against security scanners.
++ The exfiltration and presistance using Github 'Runner' Concept, where it adds victim machine as a runner in github, allowing it to RCE without being exposed.
 
 Crucially, it employs an evasion technique using the **Bun** runtime. By downloading and executing its payload via `bun` instead of the standard `node` process, it bypasses many standard EDR detection rules that only monitor `nodejs` daemons.
 
-There has been already several analysis on internet, in our report, but rather we will hint at 2 things :
+There has been already several analysis on internet, the one by WIZ is fairly good,  in our report,  we will hint at 2 things :
+
 + How to reproduce and analyse in the lab
 + Sharing our inteligence to help users and companies identify if they were compromised, which none of the companies as far as we know provided (at least as a free service)
 
@@ -33,6 +39,9 @@ To fully grasp the threat, our team replicated the attack chain in a strictly is
 1.  **The Infection:** The malware executes immediately upon `npm install`.
 2.  **The Heist:** It aggressively scans the filesystem for `.npmrc` tokens, AWS keys, and `id_rsa` files.
 3.  **The Exfiltration:** The malware creates public GitHub repositories on the victim's own account (e.g., `github.com/victim-user/random-name`) and pushes the stolen secrets there.
+
+We also in our labs tried to deobfuscate part of the code , which was very heavy to  reverse due to the huge number of techniques/encryption/padding used,
+Dev.run has a dynamic analysis ready to check, but in our lab we did that with the full attack chain and victim, for better illustration.
 
 Snapshot from our reproduction/analysis:
 
@@ -96,7 +105,7 @@ If you want more details about this attack, we discussed this already on a Strea
 youtube:ZwcZbqi9ZE8
 
 <b><b>
-You can also find more streams here: https://cybersec.ma/#/streams
+You can also find more streams here:<span style="color: blue;">  https://cybersec.ma/#/streams </span>
 
 <b><b>
 If you need further help, feel free to find us here : https://cybersec.ma/#/community 
