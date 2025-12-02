@@ -89,14 +89,18 @@ shaihulud:tool
 *   **Status: CLEAN** - Your username does not appear in the known infection list, but care is still required. Due to the nature of cross-repo exfiltration, a 100% confirmation is never possible.
 *   **Status: POTENTIALLY COMPROMISED** - Your account was linked to a Shai-Hulud repository. You should revoke all secrets immediately.
 
-## For the Community
+## More details
 
-As a non-profit community, our goal is digital sovereignty and shared defense. This tool is our contribution to the global cleanup effort.
+If you want more details about this attack, we discussed this already on a Stream on Sunday, its in moroccan darija :) , but if you want an english version or discussion, please reach out:
 
-If you want more details about this attack, we discussed this already on a Stream on Sunday , find link here, https://cybersec.ma/#/streams
+youtube:ZwcZbqi9ZE8
 
+<b><b>
+You can also find more streams here: https://cybersec.ma/#/streams
+
+<b><b>
 If you need further help, feel free to find us here : https://cybersec.ma/#/community 
 
-
+<b><b>
 Stay safe, and keep your `npm ignore-scripts` flag on 😊
 
