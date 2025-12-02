@@ -12,6 +12,7 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import type { Components } from 'react-markdown';
 import AuthorBio from '../components/AuthorBio';
 import YouTubeEmbed from '../components/YouTubeEmbed';
+import ShaiHulud from '../components/ShaiHulud';
 
 interface CodeBlockProps {
   language: string;
@@ -221,6 +222,14 @@ const PostPage = () => {
                       if (childNode.value.startsWith('youtube:')) {
                         const videoId = childNode.value.split('youtube:')[1].trim();
                         return <YouTubeEmbed videoId={videoId} />;
+                      }
+
+                      if (childNode.value.trim() === 'shaihulud:tool') {
+                        return (
+                          <div className="my-8">
+                            <ShaiHulud />
+                          </div>
+                        );
                       }
                       
                       if (childNode.value.startsWith('author:')) {
