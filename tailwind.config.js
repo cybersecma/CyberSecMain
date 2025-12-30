@@ -27,7 +27,10 @@ export default {
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'glow': 'glow 2s ease-in-out infinite alternate',
-        'fade-in': 'fadeIn 0.2s ease-out',
+        // 'forwards' is critical here to keep opacity at 1 after animation ends
+        'fade-in': 'fadeIn 0.5s ease-out forwards',
+        'fade-in-delay': 'fadeIn 0.5s ease-out 0.3s forwards', // 0.3s delay
+        'fade-in-delay-2': 'fadeIn 0.5s ease-out 0.6s forwards', // 0.6s delay
       },
       keyframes: {
         glow: {
@@ -35,7 +38,7 @@ export default {
           '100%': { boxShadow: '0 0 20px rgba(255, 0, 51, 0.8)' },
         },
         fadeIn: {
-          '0%': { opacity: '0', transform: 'translateY(-10px)' },
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         }
       },
