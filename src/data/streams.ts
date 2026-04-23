@@ -88,5 +88,16 @@ export const streams: Stream[] = [
     host: 'Mouhcine STITI',
     tags: ['trends', 'threats', 'Security Consultant', 'cybersecurity', 'Cyber governance', 'security-trends'],
     type: 'past'
+  },
+  {
+    "id": "9",
+    "title": "Defending against 0day attacks - Stream 9 - Cybersec Morocco",
+    "description": "In this live stream, the Cybersec Morocco team discusses the evolving landscape of zero-day attacks and the critical strategies for defense. The conversation covers the shrinking 'time to exploit,' moving from years to mere hours, and emphasizes the importance of IT visibility, asset inventory, and privilege management. The experts also dive into incident response planning, the debate between 'pulling the plug' versus 'observing' during a breach, and the emerging security risks associated with open-source projects in the age of AI.",
+    "videoId": "oEgZBXX_iXE",
+    "date": "2026-04-20T22:00:00Z",
+    "duration": "92 mins",
+    "host": "Ashraf, Ismail, Badr, and Adnane",
+    "tags": ["0day", "cybersecurity", "incident-response", "defense-strategies", "Morocco", "threat-intelligence", "open-source-security"],
+    "type": "past"
   }
 ];
