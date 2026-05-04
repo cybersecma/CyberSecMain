@@ -5,12 +5,12 @@ import EmbeddedVideo from '../components/EmbeddedVideo';
 import UpcomingStream from '../components/UpcomingStream';
 import { streams } from '../data/streams';
 
-const LOW_PRIORITY_STREAM_TITLES = new Set([
-  'حمي راسك او عائلتك في العالم الرقمي / CyberSec morocco',
-  'ماتبقاش تستعمل إيميلك الحقيقي! - قناع الإيميل',
-  'استخدام طوربريدج لحماية الخصوصية',
-  'نقاش حول سوق الشغل فالامن السبراني',
-]);
+const PRIORITY_STREAM_VIDEO_IDS = [
+  'HA0MBRiAHTY',
+  'oEgZBXX_iXE',
+  'ZwcZbqi9ZE8',
+  '5rgn8-6Qe9w',
+];
 
 const StreamsPage = () => {
   const [visiblePastStreams, setVisiblePastStreams] = useState(4);
@@ -35,9 +35,12 @@ const StreamsPage = () => {
 
   const pastStreams = filteredStreams.filter(stream => stream.type === 'past');
   const upcomingStreams = filteredStreams.filter(stream => stream.type === 'upcoming');
+  const priorityStreams = PRIORITY_STREAM_VIDEO_IDS
+    .map(videoId => pastStreams.find(stream => stream.videoId === videoId))
+    .filter((stream): stream is typeof pastStreams[number] => stream !== undefined);
   const orderedPastStreams = [
-    ...pastStreams.filter(stream => !LOW_PRIORITY_STREAM_TITLES.has(stream.title)),
-    ...pastStreams.filter(stream => LOW_PRIORITY_STREAM_TITLES.has(stream.title)),
+    ...priorityStreams,
+    ...pastStreams.filter(stream => !PRIORITY_STREAM_VIDEO_IDS.includes(stream.videoId || '')),
   ];
 
   const loadMoreStreams = () => {

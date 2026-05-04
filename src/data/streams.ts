@@ -2,6 +2,17 @@ import { Stream } from '../types';
 
 export const streams: Stream[] = [
   {
+    id: '10',
+    title: 'Open Source - Stream 10 - Cybersec Morocco',
+    description: 'Discussion about open source security, software supply chain risk, and practical defensive takeaways.',
+    videoId: 'HA0MBRiAHTY',
+    date: '2026-05-04T15:00:00Z',
+    duration: '1.5 hours',
+    host: 'CyberSec Morocco',
+    tags: ['open-source', 'software-supply-chain', 'cybersecurity', 'Morocco'],
+    type: 'past'
+  },
+  {
     id: '1',
     title: 'Hangout بالدارجة: DataBreaches in Morocco',
     description: 'A chill hangout about recent data breaches in Morocco with industry experts.',
