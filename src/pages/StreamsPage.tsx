@@ -5,6 +5,13 @@ import EmbeddedVideo from '../components/EmbeddedVideo';
 import UpcomingStream from '../components/UpcomingStream';
 import { streams } from '../data/streams';
 
+const LOW_PRIORITY_STREAM_TITLES = new Set([
+  'حمي راسك او عائلتك في العالم الرقمي / CyberSec morocco',
+  'ماتبقاش تستعمل إيميلك الحقيقي! - قناع الإيميل',
+  'استخدام طوربريدج لحماية الخصوصية',
+  'نقاش حول سوق الشغل فالامن السبراني',
+]);
+
 const StreamsPage = () => {
   const [visiblePastStreams, setVisiblePastStreams] = useState(4);
   const location = useLocation();
@@ -28,12 +35,16 @@ const StreamsPage = () => {
 
   const pastStreams = filteredStreams.filter(stream => stream.type === 'past');
   const upcomingStreams = filteredStreams.filter(stream => stream.type === 'upcoming');
+  const orderedPastStreams = [
+    ...pastStreams.filter(stream => !LOW_PRIORITY_STREAM_TITLES.has(stream.title)),
+    ...pastStreams.filter(stream => LOW_PRIORITY_STREAM_TITLES.has(stream.title)),
+  ];
 
   const loadMoreStreams = () => {
     setVisiblePastStreams(prev => prev + 4);
   };
 
-  const hasMoreStreams = visiblePastStreams < pastStreams.length;
+  const hasMoreStreams = visiblePastStreams < orderedPastStreams.length;
 
   return (
     <div className="min-h-screen bg-black pt-24 pb-16">
@@ -79,11 +90,11 @@ const StreamsPage = () => {
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-3xl font-bold text-white">Past Streams</h2>
               <div className="px-4 py-2 rounded-md bg-red-500/10 border border-red-500/30">
-                <span className="text-red-500">{pastStreams.length} recorded</span>
+                <span className="text-red-500">{orderedPastStreams.length} recorded</span>
               </div>
             </div>
             <div className="grid gap-8 md:grid-cols-2">
-              {pastStreams.slice(0, visiblePastStreams).map((stream, index) => (
+              {orderedPastStreams.slice(0, visiblePastStreams).map((stream, index) => (
                 <div 
                   key={stream.id} 
                   className="animate-fade-in" 
