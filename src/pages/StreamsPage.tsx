@@ -12,8 +12,11 @@ const PRIORITY_STREAM_VIDEO_IDS = [
   '5rgn8-6Qe9w',
 ];
 
+const INITIAL_VISIBLE_STREAMS = 8;
+const LOAD_MORE_STREAMS = 8;
+
 const StreamsPage = () => {
-  const [visiblePastStreams, setVisiblePastStreams] = useState(4);
+  const [visiblePastStreams, setVisiblePastStreams] = useState(INITIAL_VISIBLE_STREAMS);
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const searchQuery = queryParams.get('q') || '';
@@ -44,14 +47,14 @@ const StreamsPage = () => {
   ];
 
   const loadMoreStreams = () => {
-    setVisiblePastStreams(prev => prev + 4);
+    setVisiblePastStreams(prev => prev + LOAD_MORE_STREAMS);
   };
 
   const hasMoreStreams = visiblePastStreams < orderedPastStreams.length;
 
   return (
     <div className="min-h-screen bg-black pt-24 pb-16">
-      <div className="container mx-auto px-4">
+      <div className="mx-auto w-full max-w-[1760px] px-4 sm:px-6 xl:px-8">
         {/* Hero Section */}
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <div className="flex justify-center mb-4">
@@ -96,7 +99,7 @@ const StreamsPage = () => {
                 <span className="text-red-500">{orderedPastStreams.length} recorded</span>
               </div>
             </div>
-            <div className="grid gap-8 md:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
               {orderedPastStreams.slice(0, visiblePastStreams).map((stream, index) => (
                 <div 
                   key={stream.id} 
@@ -107,7 +110,7 @@ const StreamsPage = () => {
                     animationFillMode: 'both' 
                   }}
                 >
-                  <EmbeddedVideo videoId={stream.videoId || ''} title={stream.title} />
+                  <EmbeddedVideo videoId={stream.videoId || ''} title={stream.title} compact />
                 </div>
               ))}
             </div>

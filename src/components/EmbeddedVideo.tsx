@@ -4,11 +4,12 @@ import { Play } from 'lucide-react';
 interface EmbeddedVideoProps {
   videoId: string;
   title: string;
+  compact?: boolean;
 }
 
 const THUMBNAIL_VARIANTS = ['maxresdefault', 'sddefault', 'hqdefault', 'mqdefault'] as const;
 
-const EmbeddedVideo: React.FC<EmbeddedVideoProps> = ({ videoId, title }) => {
+const EmbeddedVideo: React.FC<EmbeddedVideoProps> = ({ videoId, title, compact = false }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [thumbnailVariantIndex, setThumbnailVariantIndex] = useState(0);
 
@@ -25,8 +26,10 @@ const EmbeddedVideo: React.FC<EmbeddedVideoProps> = ({ videoId, title }) => {
   };
 
   return (
-    <div className="group bg-gradient-to-br from-gray-900 to-black rounded-xl border border-gray-800 p-4 hover:border-red-500/30 transition-all duration-300 shadow-lg overflow-hidden">
-      <div className="relative aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
+    <div className={`group bg-gradient-to-br from-gray-900 to-black border border-gray-800 transition-all duration-300 shadow-lg overflow-hidden ${
+      compact ? 'rounded-lg p-2.5' : 'rounded-xl p-4'
+    } hover:border-red-500/30`}>
+      <div className={`relative aspect-w-16 aspect-h-9 overflow-hidden ${compact ? 'rounded-md' : 'rounded-lg'}`}>
         {!isPlaying ? (
           <button
             onClick={() => setIsPlaying(true)}
@@ -52,8 +55,10 @@ const EmbeddedVideo: React.FC<EmbeddedVideoProps> = ({ videoId, title }) => {
               }}
             />
             <div className="absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:bg-black/50" />
-            <div className="relative z-10 w-16 h-16 flex items-center justify-center rounded-full bg-red-600 transition-transform duration-300 group-hover:scale-110 group-hover:bg-red-700">
-              <Play className="w-8 h-8 text-white fill-white" />
+            <div className={`relative z-10 flex items-center justify-center rounded-full bg-red-600 transition-transform duration-300 group-hover:scale-110 group-hover:bg-red-700 ${
+              compact ? 'h-12 w-12' : 'h-16 w-16'
+            }`}>
+              <Play className={`${compact ? 'h-6 w-6' : 'h-8 w-8'} text-white fill-white`} />
             </div>
           </button>
         ) : (
@@ -67,7 +72,11 @@ const EmbeddedVideo: React.FC<EmbeddedVideoProps> = ({ videoId, title }) => {
           />
         )}
       </div>
-      <h3 className="text-lg font-bold mt-4 text-white group-hover:text-red-500 transition-colors duration-300">{title}</h3>
+      <h3 className={`font-bold text-white group-hover:text-red-500 transition-colors duration-300 ${
+        compact ? 'mt-3 text-sm leading-snug md:text-base' : 'mt-4 text-lg'
+      }`}>
+        {title}
+      </h3>
     </div>
   );
 };
