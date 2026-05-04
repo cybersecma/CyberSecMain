@@ -7,21 +7,23 @@ interface EmbeddedVideoProps {
   compact?: boolean;
 }
 
-const THUMBNAIL_VARIANTS = ['maxresdefault', 'sddefault', 'hqdefault', 'mqdefault'] as const;
+const HIGH_QUALITY_THUMBNAIL_VARIANTS = ['maxresdefault', 'sddefault', 'hqdefault', 'mqdefault'] as const;
+const FRESH_THUMBNAIL_VARIANTS = ['sddefault', 'maxresdefault', 'hqdefault', 'mqdefault'] as const;
 
 const EmbeddedVideo: React.FC<EmbeddedVideoProps> = ({ videoId, title, compact = false }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [thumbnailVariantIndex, setThumbnailVariantIndex] = useState(0);
+  const thumbnailVariants = compact ? FRESH_THUMBNAIL_VARIANTS : HIGH_QUALITY_THUMBNAIL_VARIANTS;
 
   useEffect(() => {
     setThumbnailVariantIndex(0);
-  }, [videoId]);
+  }, [videoId, compact]);
 
-  const currentThumbnailVariant = THUMBNAIL_VARIANTS[thumbnailVariantIndex];
+  const currentThumbnailVariant = thumbnailVariants[thumbnailVariantIndex];
   const thumbnailUrl = `https://i.ytimg.com/vi/${videoId}/${currentThumbnailVariant}.jpg`;
   const tryNextThumbnailVariant = () => {
     setThumbnailVariantIndex((currentIndex) =>
-      currentIndex < THUMBNAIL_VARIANTS.length - 1 ? currentIndex + 1 : currentIndex
+      currentIndex < thumbnailVariants.length - 1 ? currentIndex + 1 : currentIndex
     );
   };
 
