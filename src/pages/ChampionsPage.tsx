@@ -138,7 +138,9 @@ const ChampionsPage = () => {
 
             <fieldset>
               <legend className="text-lg font-bold text-white mb-3">Cybersecurity expertise</legend>
-              <p className="text-sm text-gray-400 mb-4">Select at least one area where you can contribute confidently.</p>
+              <p className="text-sm text-gray-400 mb-4">
+                Select <strong className="font-bold text-orange-400">at least one</strong> area where you can contribute confidently.
+              </p>
               <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-3">
                 {expertiseAreas.map((area) => (
                   <label key={area} className="flex items-start rounded-md border border-gray-800 bg-black/70 p-3 text-sm text-gray-300 hover:border-red-500/50">
@@ -196,12 +198,12 @@ const ChampionsPage = () => {
             </fieldset>
 
             <label className="block">
-              <span className="block text-lg font-bold text-white mb-3">Proven records of activity</span>
+              <span className="block text-lg font-bold text-white mb-3">Few words about you in your mind to give back</span>
               <textarea
-                name="Proven records of activity"
+                name="Few words about you in your mind to give back"
                 rows={4}
                 className="w-full rounded-md bg-black border border-gray-700 px-4 py-3 text-white placeholder-gray-500 focus:border-red-500 focus:outline-none"
-                placeholder="LinkedIn profile, talks, workshops, CVE/research links, GitHub, blog posts, public achievements, events you animated..."
+                placeholder="Optional: a short note about your motivation, ideas, availability, LinkedIn, talks, research, or public achievements..."
               />
             </label>
 
