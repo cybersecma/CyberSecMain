@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react';
-import { CheckCircle, Send, ShieldCheck, Sparkles, Trophy, Users } from 'lucide-react';
+import { CheckCircle, Send, Trophy } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
 const expertiseAreas = [
@@ -61,19 +61,16 @@ const ChampionsPage = () => {
   return (
     <div className="min-h-screen bg-black pt-24 pb-16">
       <div className="container mx-auto px-4">
-        <section className="max-w-5xl mx-auto text-center mb-14 animate-fade-in">
+        <section className="max-w-5xl mx-auto text-center mb-10 animate-fade-in">
           <div className="flex justify-center mb-4">
             <div className="inline-flex items-center px-4 py-2 rounded-md bg-red-500/10 border border-red-500/30">
               <Trophy className="h-5 w-5 text-red-500 mr-2" />
               <span className="text-sm font-medium text-red-500">CyberSec.ma Champions</span>
             </div>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
-            Join the active circle building practical cyber knowledge in Morocco
+          <h1 className="text-4xl md:text-6xl font-bold mb-0 text-white leading-tight">
+            Join Community as Champion (Builder)
           </h1>
-          <p className="text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto">
-            Champions are experienced community members who can give back with talks, workshops, demos, mentoring, incident insights, or short expert calls.
-          </p>
           {submitted && (
             <div className="mt-8 inline-flex items-center rounded-md border border-green-500/30 bg-green-500/10 px-5 py-3 text-green-300">
               <CheckCircle className="h-5 w-5 mr-2" />
@@ -82,35 +79,7 @@ const ChampionsPage = () => {
           )}
         </section>
 
-        <section className="grid lg:grid-cols-[0.85fr_1.15fr] gap-8 max-w-7xl mx-auto">
-          <aside className="space-y-4">
-            {[
-              {
-                icon: <ShieldCheck className="h-6 w-6 text-red-500" />,
-                title: 'Practical expertise',
-                text: 'We are looking for people who have worked on real systems, investigations, labs, research, or production security work.',
-              },
-              {
-                icon: <Sparkles className="h-6 w-6 text-yellow-400" />,
-                title: 'Visible contribution',
-                text: 'A strong application explains what you can give back in the next 30 days, even if it is a focused 30-minute session.',
-              },
-              {
-                icon: <Users className="h-6 w-6 text-blue-400" />,
-                title: 'Community mindset',
-                text: 'Champions help raise the level of the ecosystem through clear, ethical, and useful knowledge sharing.',
-              },
-            ].map((item) => (
-              <div key={item.title} className="bg-gray-900/40 border border-gray-800 rounded-xl p-5">
-                <div className="flex items-center mb-3">
-                  {item.icon}
-                  <h2 className="text-xl font-bold text-white ml-3 mt-0 mb-0">{item.title}</h2>
-                </div>
-                <p className="text-gray-400 text-sm leading-relaxed">{item.text}</p>
-              </div>
-            ))}
-          </aside>
-
+        <section className="max-w-5xl mx-auto">
           <form
             action="https://formsubmit.co/elamrani.abdessamad@gmail.com"
             method="POST"
@@ -259,11 +228,6 @@ const ChampionsPage = () => {
               Submit Champion Application
               <Send className="ml-2 h-5 w-5" />
             </button>
-
-            <div className="flex items-start text-sm text-gray-400">
-              <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-              <p>Submissions are sent to the CyberSec.ma team email through FormSubmit. The first submission may require mailbox confirmation.</p>
-            </div>
           </form>
         </section>
       </div>
