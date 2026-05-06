@@ -161,11 +161,11 @@ const ChampionsPage = () => {
 
             <div className="grid md:grid-cols-2 gap-6">
               <fieldset>
-                <legend className="text-lg font-bold text-white mb-3">Willing to join events / streams?</legend>
+                <legend className="text-lg font-bold text-white mb-3">Willing to animate events/streams?</legend>
                 <div className="flex gap-3">
                   {['Yes', 'No'].map((option) => (
                     <label key={option} className="flex flex-1 items-center rounded-md border border-gray-800 bg-black/70 p-3 text-gray-300">
-                      <input type="radio" name="Willing to join events / streams" value={option} required className="mr-3 accent-red-500" />
+                      <input type="radio" name="Willing to animate events/streams" value={option} required className="mr-3 accent-red-500" />
                       {option}
                     </label>
                   ))}
