@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Video, BookOpen, AlertTriangle, Database } from 'lucide-react';
+import { Video, BookOpen, AlertTriangle, Database, ArrowRight, ShieldCheck, Trophy, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
 import { usePosts } from '../context/PostContext';
@@ -66,6 +66,46 @@ const Home = () => {
   return (
     <div className="animate-fade-in">
       <HeroSection />
+
+      {/* Champions Callout Section */}
+      <section className="py-14 bg-black border-b border-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
+            <div>
+              <div className="inline-flex items-center px-4 py-2 rounded-md bg-red-500/10 border border-red-500/30 mb-5">
+                <Trophy className="h-5 w-5 text-red-500 mr-2" />
+                <span className="text-sm font-medium text-red-500">Join as a Champion</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mt-0 mb-4">
+                Help lead streams, workshops, demos, and expert sessions
+              </h2>
+              <p className="text-lg text-gray-400 leading-relaxed max-w-3xl mb-6">
+                CyberSec.ma Champions are active practitioners who can give back at least 30 minutes a month to raise the cybersecurity level in Morocco.
+              </p>
+              <Link
+                to="/champions"
+                className="inline-flex items-center px-6 py-3 bg-red-500 text-white text-base font-semibold rounded-md hover:bg-red-600 transition-all duration-200 hover:shadow-lg hover:shadow-red-500/20"
+              >
+                Apply as Champion
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </div>
+
+            <div className="grid sm:grid-cols-3 lg:grid-cols-1 gap-4">
+              {[
+                { icon: <ShieldCheck className="h-5 w-5 text-red-500" />, title: 'Practical expertise' },
+                { icon: <Video className="h-5 w-5 text-blue-400" />, title: 'Events and streams' },
+                { icon: <Users className="h-5 w-5 text-green-400" />, title: 'Monthly giveback' },
+              ].map((item) => (
+                <div key={item.title} className="flex items-center rounded-lg border border-gray-800 bg-gray-900/40 p-4">
+                  {item.icon}
+                  <span className="ml-3 text-sm font-semibold text-white">{item.title}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Latest News Section */}
       {shaiHuludArticle && (

@@ -35,7 +35,7 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <div className={`flex items-center space-x-8 transition-all duration-300 ease-in-out ${
+            <div className={`flex items-center space-x-6 transition-all duration-300 ease-in-out ${
               isSearchOpen ? 'translate-x-[-100px] opacity-0' : 'translate-x-0 opacity-100'
             }`}>
             <Link 
@@ -70,6 +70,14 @@ const Navbar = () => {
               >
               Streams
             </Link>
+              <Link 
+                to="/champions" 
+                className={`text-sm font-medium transition-colors ${
+                  isActive('/champions') ? 'text-cyber-red-500' : 'text-gray-300 hover:text-white'
+                }`}
+              >
+                Champions
+              </Link>
               <Link 
                 to="/community" 
                 className={`text-sm font-medium transition-colors ${
@@ -165,6 +173,15 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Streams
+              </Link>
+              <Link 
+                to="/champions" 
+                className={`text-sm font-medium transition-colors ${
+                  isActive('/champions') ? 'text-cyber-red-500' : 'text-gray-300 hover:text-white'
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Champions
               </Link>
               <Link 
                 to="/community" 
