@@ -131,7 +131,7 @@ const ShaiHulud = () => {
             <div>
               <h3 className="text-xl font-bold text-red-500 mb-2">User COMPROMISED!!</h3>
               <p className="text-gray-300">
-                The developer <span className="font-mono text-white bg-red-500/20 px-2 py-0.5 rounded">{resultInput}</span> has bee COMPROMISED by Shai Hulud (v1/2) !! Your systems/data might be leaked or compromied.
+                The identifier <span className="font-mono text-white bg-red-500/20 px-2 py-0.5 rounded">{resultInput}</span> appears in Shai Hulud v1/v2 public records. Treat related accounts and tokens as potentially exposed and investigate through your normal security process.
               </p>
             </div>
           </div>
@@ -151,7 +151,7 @@ const ShaiHulud = () => {
             
             <div className="mt-2 pt-4 border-t border-green-500/30 text-sm text-gray-400">
                 <p className="leading-relaxed">
-                    <span className="text-green-400 font-semibold">Important:</span> If your GitHub user is not in our list, it doesn't necessarily mean it's not compromised. Care is necessary to keep an eye on other metadata and maintain standard security measures. If you need help, feel free to reach out, we will try to help.
+                    <span className="text-green-400 font-semibold">Important:</span> A missing match is not proof of safety. Continue checking other indicators and maintain standard security measures.
                 </p>
             </div>
           </div>

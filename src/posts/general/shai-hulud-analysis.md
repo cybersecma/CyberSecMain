@@ -3,7 +3,7 @@ title: "Am I Infected? Navigating the Shai-Hulud 2.0 Blast Radius"
 publishedAt: "2025-12-02"
 author: "Cybersec.ma Research Team"
 authorRole: "Abdessamad El Amrani, Adnane T, Karim Boudra"
-excerpt: "Our analysis of the Shai-Hulud 2.0 NPM worm, including our lab replication of the kill chain and the release of a public intelligence tool to check for compromised accounts."
+excerpt: "Our analysis of the Shai-Hulud 2.0 NPM worm, including our lab replication of the kill chain and public indicators gathered from open-source research."
 coverImage: "/images/shai-hulud-cover.jpg"
 tags: ["Malware Analysis", "Supply Chain", "OSINT", "Threat Intelligence"]
 readingTime: 5
@@ -12,7 +12,7 @@ pinned: true
 
 JS and NPM are used by large scale of developers world wide, and especially in Morocco. The software supply chain is no longer just a vector for opportunistic theft; it is a domain of active, automated warfare. Late November 2025 we noticed the arrival of **Shai-Hulud 2.0** (or "Sha1-Hulud: The Second Coming"), a sophisticated NPM worm that compromised foundational packages used by major platforms like Zapier, Postman, and PostHog.
 
-At **Cybersec.ma**, we didn't just read the reports, made a stream, and talk about it. We also analyzed the whole kill chain in our labs, reproduced it, and particularily focused on executing an OSINT investigation to figure out the impact on compromised companies and GitHub users. We have published this data as part of our **community free intelligence services**  <span style="color: blue;"> https://cybersec.ma/#/public-intelligence</span> on our website, <span style="color: orange;">**we believe this is our unique and exclusive 'value added' comparing to any other security reports.** </span>
+At **Cybersec.ma**, we didn't just read the reports, made a stream, and talk about it. We also analyzed the whole kill chain in our labs, reproduced it, and particularly focused on executing an OSINT investigation to understand the public impact on GitHub users. We published related public indicators on our community intelligence page: <span style="color: blue;"> https://cybersec.ma/#/public-intelligence</span>.
 
 ## The "Shai-Hulud" Mechanism: Why It’s Different
 
@@ -28,7 +28,7 @@ Crucially, it employs an evasion technique using the **Bun** runtime. By downloa
 There has been already several analysis on internet, the one by WIZ is fairly good,  in our report,  we will hint at 2 things :
 
 + How to reproduce and analyse in the lab
-+ Sharing our inteligence to help users and companies identify if they were compromised, which none of the companies as far as we know provided (at least as a free service)
++ Sharing public indicators to help users check whether a GitHub identifier appears in known Shai-Hulud records
 
 
 
@@ -49,13 +49,13 @@ Snapshot from our reproduction/analysis:
 
 Our lab results confirmed the presence of a **"Dead Man's Switch"** code designed to wipe the victim's `$HOME` directory if the malware fails to connect to its C2 servers.
 
-## Our OSINT & our Inteligence Attack Checker
+## Our OSINT & our Intelligence Attack Checker
 
-The malware relies on creating public repositories tagged with the description *"Sha1-Hulud: The Second Coming"*. While this makes the data publicly accessible, the sheer volume of infection—thousands of repositories, most of which are already deleted—makes it impossible for individual developers or companies to know if they were compromised.
+The malware relies on creating public repositories tagged with the description *"Sha1-Hulud: The Second Coming"*. While this makes the data publicly accessible, the sheer volume of infection—thousands of repositories, most of which are already deleted—makes it hard for individual developers to know if their GitHub identifiers appeared in public traces of the campaign.
 
 We noticed a gap: **No major security vendor has provided a simple, searchable database for the community.**
 
-Using OSINT data gathered from our analysis, we have managed to identify and recover a large part of the impacted GitHub accounts since Patient 0. We are making this Hash DB available to the public for free.
+Using OSINT data gathered from our analysis, we have managed to identify and recover a large part of the impacted GitHub accounts since Patient 0. We are making this hash dataset available to the public as a community resource.
 
 Our research has identified and recovered over 15k repos, and related users 
 
@@ -79,10 +79,10 @@ Sample of the check for a compromised user
 <br><br>
 
 
-## Our inteligence checker
+## Our intelligence checker
 
 
-Finally, we are glad to provide an access to our DB to allow you check if one of your developers was compromised by the attak,
+Finally, we are glad to provide a public checker that lets users see whether a GitHub identifier appears in the records we collected.
 
 Sample of few compromised users
 
@@ -90,7 +90,7 @@ Sample of few compromised users
 
 <br><br>
 
-Following is our tool, you an also find it as well as other inteligence services in : https://cybersec.ma/#/public-intelligence
+Following is our tool. You can also find it on the public intelligence page: https://cybersec.ma/#/public-intelligence
 
 shaihulud:tool
 
@@ -100,7 +100,7 @@ shaihulud:tool
 
 ## More details
 
-If you want more details about this attack, we discussed this already on a Stream on Sunday, its in moroccan darija :) , but if you want an english version or discussion, please reach out:
+If you want more details about this attack, we discussed it in Moroccan Darija during this stream:
 
 youtube:ZwcZbqi9ZE8
 
@@ -108,8 +108,4 @@ youtube:ZwcZbqi9ZE8
 You can also find more streams here:<span style="color: blue;">  https://cybersec.ma/#/streams </span>
 
 <b><b>
-If you need further help, feel free to find us here : https://cybersec.ma/#/community 
-
-<b><b>
 Stay safe, and keep your `npm ignore-scripts` flag on 😊
-

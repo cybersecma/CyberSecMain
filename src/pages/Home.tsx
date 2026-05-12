@@ -120,7 +120,7 @@ const Home = () => {
               </div>
               <h2 className="text-2xl md:text-3xl font-bold mt-3 text-white">Shai-Hulud 2.0: Threat Intelligence & Analysis</h2>
               <p className="text-lg text-gray-400 leading-relaxed max-w-2xl mx-auto mt-2 mb-6">
-                Our research team has completed a deep analysis of the NPM worm attack and released free intelligence tools for the community.
+                Our research team has completed a deep analysis of the NPM worm attack and published public indicators for the community.
               </p>
             </div>
 
@@ -147,8 +147,8 @@ const Home = () => {
                   <Database className="h-5 w-5 text-blue-500 mr-2 group-hover:scale-110 transition-transform" />
                   <h3 className="text-base font-bold text-white group-hover:text-blue-500 transition-colors">Check Your Status</h3>
                 </div>
-                <p className="text-gray-400 text-xs mb-3 line-clamp-2">Use our free intelligence tool to verify if your GitHub account was compromised by Shai-Hulud 2.0.</p>
-                <span className="text-blue-500 text-xs font-medium group-hover:underline">Check Now →</span>
+                <p className="text-gray-400 text-xs mb-3 line-clamp-2">Check whether a GitHub username appears in the public Shai-Hulud 2.0 records collected by the community.</p>
+                <span className="text-blue-500 text-xs font-medium group-hover:underline">Check Records →</span>
               </Link>
 
               {/* Stream Link */}

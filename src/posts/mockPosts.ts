@@ -5,7 +5,7 @@ const mockPosts: Post[] = [
     id: '2',
     title: 'Am I Infected? Navigating the Shai-Hulud 2.0 Blast Radius',
     slug: 'shai-hulud-analysis',
-    excerpt: 'Our analysis of the Shai-Hulud 2.0 NPM worm, including our lab replication of the kill chain and the release of a public intelligence tool to check for compromised accounts.',
+    excerpt: 'Our analysis of the Shai-Hulud 2.0 NPM worm, including our lab replication of the kill chain and public indicators gathered from open-source research.',
     author: 'Cybersec.ma Research Team',
     publishedAt: '2025-12-02T10:00:00Z',
     coverImage: '/images/shai-hulud-cover.jpg',
@@ -17,7 +17,7 @@ title: "Am I Infected? Navigating the Shai-Hulud 2.0 Blast Radius"
 publishedAt: "2025-12-02"
 author: "Cybersec.ma Research Team"
 authorRole: "Research Team"
-excerpt: "Our analysis of the Shai-Hulud 2.0 NPM worm, including our lab replication of the kill chain and the release of a public intelligence tool to check for compromised accounts."
+excerpt: "Our analysis of the Shai-Hulud 2.0 NPM worm, including our lab replication of the kill chain and public indicators gathered from open-source research."
 coverImage: "/images/shai-hulud-cover.jpg"
 tags: ["Malware Analysis", "Supply Chain", "OSINT", "Threat Intelligence"]
 readingTime: 5
@@ -25,7 +25,7 @@ readingTime: 5
 
 The software supply chain is no longer just a vector for opportunistic theft; it is a domain of active, automated warfare. Late November 2025 marked the arrival of **Shai-Hulud 2.0** (or "Sha1-Hulud: The Second Coming"), a sophisticated NPM worm that has already compromised foundational packages used by major platforms like Zapier, Postman, and PostHog.
 
-At **Cybersec.ma**, we didn't just read the reports, make a stream, and talk about it. We also analyzed the whole kill chain in our labs, reproduced it, and executed an OSINT investigation to figure out the impact on compromised companies and GitHub users. We have published this data as part of our **community free intelligence services** on our website.
+At **Cybersec.ma**, we didn't just read the reports, make a stream, and talk about it. We also analyzed the whole kill chain in our labs, reproduced it, and executed an OSINT investigation to understand the public impact on GitHub users. We published related public indicators on our community intelligence page.
 
 ## The "Shai-Hulud" Mechanism: Why It’s Different
 
@@ -45,11 +45,11 @@ Our lab results confirmed the presence of a **"Dead Man's Switch"** code designe
 
 ## The Shai-Hulud Victim Check
 
-The malware relies on creating public repositories tagged with the description *"Sha1-Hulud: The Second Coming"*. While this makes the data publicly accessible, the sheer volume of infection—thousands of repositories, most of which are already deleted—makes it impossible for individual developers or companies to know if they were compromised.
+The malware relies on creating public repositories tagged with the description *"Sha1-Hulud: The Second Coming"*. While this makes the data publicly accessible, the sheer volume of infection—thousands of repositories, most of which are already deleted—makes it hard for individual developers to know if their GitHub identifiers appeared in public traces of the campaign.
 
 We noticed a gap: **No major security vendor has provided a simple, searchable database for the community.**
 
-Using OSINT data gathered from our analysis, we have managed to identify and recover a large part of the impacted GitHub accounts since Patient 0. We are making this Hash DB available to the public for free.
+Using OSINT data gathered from our analysis, we have managed to identify and recover a large part of the impacted GitHub accounts since Patient 0. We are making this hash dataset available to the public as a community resource.
 
 shaihulud:tool
 

@@ -1,4 +1,4 @@
-import { Shield, Database, Lock, Building2, MessageSquareText, Linkedin } from 'lucide-react';
+import { Shield, Database, Lock } from 'lucide-react';
 import ShaiHulud from '../components/ShaiHulud';
 import NewsletterSignup from '../components/NewsletterSignup';
 // import DebugNewsletter from '../components/DebugNewsletter'; // Uncomment to debug
@@ -19,8 +19,8 @@ const PublicIntelligencePage = () => {
             Open Source <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">Intelligence</span>
           </h1>
           <p className="text-xl text-gray-400 leading-relaxed">
-            Access our public database of compromised accounts and security incidents. 
-            Check if your personal accounts have been exposed.
+            Access community-maintained public indicators from open-source research. 
+            Check whether an identifier appears in published datasets.
           </p>
         </div>
 
@@ -60,41 +60,6 @@ const PublicIntelligencePage = () => {
           
           {/* Newsletter Section */}
           <NewsletterSignup />
-          
-          {/* Company Contact Section */}
-          <div className="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 md:p-10 backdrop-blur-sm">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="flex-1">
-                <div className="flex items-center space-x-3 mb-4">
-                  <Building2 className="h-6 w-6 text-blue-500" />
-                  <h3 className="text-xl font-bold text-white">For Organizations & Companies</h3>
-                </div>
-                <p className="text-gray-400 mb-6">
-                  Are you a company representative? If you suspect your organization's members might be affected by a breach or want to verify the security status of your team, please contact us directly for a confidential assessment.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a 
-                  href="https://www.linkedin.com/groups/10081631/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[#0077b5]/10 border border-[#0077b5]/30 text-[#0077b5] hover:bg-[#0077b5]/20 transition-all duration-300 font-medium"
-                >
-                  <Linkedin className="mr-2 h-5 w-5" />
-                  Contact via LinkedIn
-                </a>
-                <a 
-                  href="https://chat.whatsapp.com/EXp857CsQSdL5m2ZauHKgh" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] hover:bg-[#25D366]/20 transition-all duration-300 font-medium"
-                >
-                  <MessageSquareText className="mr-2 h-5 w-5" />
-                  Contact via WhatsApp
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
